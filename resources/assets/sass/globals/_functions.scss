@@ -1,0 +1,255 @@
+//
+//
+//   Functions
+//   Základní funkce
+//
+//
+
+// MIXIN | sprites options
+//
+// @param $x = x position
+// @param $y = y position
+// @param $width = width
+//
+// -----------------------------------------------------------------
+@mixin sprites-options($x, $y, $sprite-width, $sprite-height) {
+  background: $sprites-pattern $x + px $y + px;
+  width: $sprite-width + px;
+  height: $sprite-height + px;
+}
+
+// MIXIN | sprites options
+//
+// @param $x = x position
+// @param $y = y position
+// @param $width = width
+// @param $height = height
+//
+// -----------------------------------------------------------------
+@mixin sprites-options-height($x, $y, $sprite-width, $sprite-height, $final-height) {
+  box-sizing: content-box;
+  background: $sprites-pattern $x + px $y + px;
+  width: $sprite-width + px;
+  height: $sprite-height + px;
+  padding-bottom: $final-height - $sprite-height + px;
+}
+
+// MIXIN | custom underline
+//
+//
+// -----------------------------------------------------------------
+@mixin custom-underline($color) {
+  position: relative;
+  z-index: 10;
+  &:before {
+    @include transition(200ms);
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    border-bottom: 1px solid $color;
+    bottom: 0px;
+    z-index: 1;
+    left: 0;
+  }
+  &:hover:before {
+    border-bottom: 1px solid transparent;
+  }
+}
+
+// MIXIN | custom underline-link
+//
+//
+// -----------------------------------------------------------------
+@mixin custom-underline-link($color) {
+  span {
+    position: relative;
+  }
+  z-index: 10;
+  text-decoration: none;
+  span:before {
+    content: "";
+    @include transition(200ms);
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    border-bottom: 1px solid transparent;
+    bottom: -3px;
+    z-index: 1;
+    left: 0;
+  }
+  &:hover span:before {
+    border-bottom: 1px solid $color;
+  }
+}
+
+//
+//
+//   Functions
+//   Základní funkce
+//
+//
+
+// MIXIN | border-radius (all)
+// -----------------------------------------------------------------
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius $radius $radius $radius;
+}
+
+// border-radius (custom)
+@mixin border-radius-custom($bl, $br, $tr, $tl) {
+  -webkit-border-top-left-radius: $tl;
+  -webkit-border-top-right-radius: $tr;
+  -webkit-border-bottom-right-radius: $br;
+  -webkit-border-bottom-left-radius: $bl;
+  -moz-border-radius-topleft: $tl;
+  -moz-border-radius-topright: $tr;
+  -moz-border-radius-bottomright: $br;
+  -moz-border-radius-bottomleft: $bl;
+  border-top-left-radius: $tl;
+  border-top-right-radius: $tr;
+  border-bottom-right-radius: $br;
+  border-bottom-left-radius: $bl;
+  border-radius: $bl $br $tr $tl;
+}
+
+// MIXIN | transition (all)
+// -----------------------------------------------------------------
+@mixin transition($time) {
+  -webkit-transition: all $time ease-out;
+  -moz-transition: all $time ease-out;
+  -o-transition: all $time ease-out;
+  transition: all $time ease-out;
+}
+
+// transition (options)
+@mixin transition-what($what, $time) {
+  -webkit-transition: $what $time ease-out;
+  -moz-transition: $what $time ease-out;
+  -o-transition: $what $time ease-out;
+  transition: $what $time ease-out;
+}
+
+// MIXIN | linear gradient (bottom - top)
+//
+// @param $bottom-color = i.e. #fff
+// @param $top-color = i.e. #fff
+// @param $top-color = i.e. 'fff' (IE9 svg fix)
+// @param $bottom-color = i.e. 'fff' (IE9 svg fix)
+//
+// -----------------------------------------------------------------
+@mixin gradient-bottom-top($bottom-color, $top-color, $bottom-color-ie, $top-color-ie) {
+  background: $bottom-color;
+  background: url(../img/ie9_svg.php?from=#{$top-color-ie}&to=#{$bottom-color-ie});
+  background: -moz-linear-gradient(top, $top-color 0%, $bottom-color 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $top-color), color-stop(100%, $bottom-color)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, $top-color 0%, $bottom-color 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $top-color 0%, $bottom-color 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, $top-color 0%, $bottom-color 100%); /* IE10+ */
+  background: linear-gradient(to bottom, $top-color 0%, $bottom-color 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{$top-color}', endColorstr='#{$bottom-color}'); /* IE6 & IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#{ie-hex-str($top-color)}', endColorstr='#{ie-hex-str($bottom-color)}')"; /* IE8 */
+  zoom: 1;
+}
+
+// MIXIN | font size REM, line height + old browsers fallback
+// -----------------------------------------------------------------
+@mixin text-options($font-size: 12, $line-height: 16, $base: 16) {
+  font-size: $font-size + px; // fallback for old browsers
+  font-size: ($font-size / $base) * 1rem;
+  line-height: $line-height + px; // fallback for old browsers
+  line-height: ($line-height / $base) * 1rem;
+}
+
+// MIXIN | highlight
+// -----------------------------------------------------------------
+@mixin highlight($color: red) {
+  background-color: $color;
+}
+
+// MIXIN | opacity
+// -----------------------------------------------------------------
+@mixin opacity($opacityValue) {
+  $opacityValueIE: $opacityValue * 100;
+  opacity: $opacityValue;
+  filter: alpha(opacity=#{$opacityValueIE});
+}
+
+// MIXIN | column
+//
+// @param $width = width
+// @param $pad-left = left padding
+// @param $pad-right = right padding
+// @param $inner-align = inner content align
+//
+// -----------------------------------------------------------------
+@mixin column($width, $pad-left: 0, $pad-right: 0, $inner-align: left) {
+  @extend %clearfix;
+  display: block;
+  float: left;
+  width: $width;
+  padding-left: $pad-left;
+  padding-right: $pad-right;
+  text-align: $inner-align;
+  position: relative;
+}
+
+// MIXIN | column-shift
+//
+// @param $width = width
+// @param $count = columns-count
+// @param $margin-direction = mrgin direction ()
+// @param $pad-left = left paddingleft/right
+// @param $pad-right = right padding
+// @param $mar-left = left margin
+// @param $mar-right = right margin
+// @param $inner-align = inner content align
+//
+// -----------------------------------------------------------------
+@mixin column-shift($width, $count, $pad-left: 0, $pad-right: 0, $inner-align: left) {
+
+  $margin-size: 100-($width*$count);
+  $margin-gutter: $margin-size/($count - 1);
+
+  @extend %clearfix;
+  display: block;
+  float: left;
+  width: $width;
+  padding-left: $pad-left;
+  padding-right: $pad-right;
+  margin-right: $margin-gutter;
+  text-align: $inner-align;
+  position: relative;
+  &:first-of-type {
+    margin-left: 0;
+  }
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+@mixin row-padding($gap-width: 30px) {
+  .row {
+    margin-left: $gap-width / -2;
+    margin-right: $gap-width / -2;
+
+    &>.col-lg-1, &>.col-lg-10, &>.col-lg-11, &>.col-lg-12, &>.col-lg-2, &>.col-lg-3, &>.col-lg-4, &>.col-lg-5, &>.col-lg-6, &>.col-lg-7, &>.col-lg-8, &>.col-lg-9, &>.col-md-1, &>.col-md-10, &>.col-md-11, &>.col-md-12, &>.col-md-2, &>.col-md-3, &>.col-md-4, &>.col-md-5, &>.col-md-6, &>.col-md-7, &>.col-md-8, &>.col-md-9, &>.col-sm-1, &>.col-sm-10, &>.col-sm-11, &>.col-sm-12, &>.col-sm-2, &>.col-sm-3, &>.col-sm-4, &>.col-sm-5, &>.col-sm-6, &>.col-sm-7, &>.col-sm-8, &>.col-sm-9, &>.col-xs-1, &>.col-xs-10, &>.col-xs-11, &>.col-xs-12, &>.col-xs-2, &>.col-xs-3, &>.col-xs-4, &>.col-xs-5, &>.col-xs-6, &>.col-xs-7, &>.col-xs-8, &>.col-xs-9 {
+      padding-left: $gap-width / 2;
+      padding-right: $gap-width / 2;
+    }
+  }
+}
+
+%reset {
+  border         : none;
+  background     : none;
+  outline        : none;
+  box-shadow     : none;
+  margin         : 0;
+  padding-top    : 0;
+  padding-bottom : 0;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "–",
+  "version": "0.0.1",
+  "authors": [
+    "Tomas Novotny (novotny@cynet.cz)"
+  ],
+  "description": "–",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "boostrap-sass": "~3.3.3",
+    "fontawesome": "~4.3.0",
+    "jquery": "~2.1.3",
+    "bootstrap": "~3.3.4",
+    "tinymce": "~4.1.9"
+  }
+}

@@ -1,0 +1,133 @@
+/* Document */
+*,
+html,
+body {
+  box-sizing               : border-box;
+  -webkit-box-sizing       : border-box;
+  -moz-box-sizing          : border-box;
+  -webkit-font-smoothing   : antialiased;
+  -moz-osx-font-smoothing  : grayscale;
+  -webkit-text-size-adjust : 100%;
+  -ms-text-size-adjust     : 100%;
+}
+
+html {
+  width  : 100%;
+  height : 100%;
+}
+
+body {
+  width       : 100%;
+  height      : 100%;
+  margin      : 0;
+  padding     : 0;
+  background  : white;
+  font-weight : 400;
+}
+
+a {
+  text-decoration : none;
+
+  &:hover {
+    text-decoration : none;
+  }
+  &.underline {
+    text-decoration : underline;
+    &:hover {
+      text-decoration : none;
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight : 300;
+}
+
+h1 {
+  font-size : em-calc(32);
+}
+
+h2 {
+  font-size : em-calc(24);
+}
+
+ul {
+  padding : 0;
+  margin  : 0;
+
+  li {
+    list-style-position : inside;
+  }
+}
+
+hr {
+  border-top-color: $border;
+  margin: $v-margin 0;
+}
+.table {
+  &-simple {
+    th, td {
+      border : none;
+    }
+  }
+}
+
+.margin-bottom {
+  margin-bottom : $v-margin;
+}
+
+.margin-top {
+  margin-top : $v-margin;
+}
+
+
+.relative {
+  position : relative;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.text {
+
+  &-green {
+    color : $green;
+    &:hover {
+      color : $green;
+    }
+  }
+
+  &-blue {
+    color : $lightBlue;
+    &:hover {
+      color : $lightBlue;
+    }
+  }
+
+  &-red {
+    color : $red;
+    &:hover {
+      color : $red;
+    }
+  }
+
+  &-gray {
+    color : $gray;
+    &:hover {
+      color : $gray
+    }
+  }
+
+  &-uppercase {
+    text-transform : uppercase;
+  }
+
+  &-center {
+      text-align: center;
+  }
+
+  &-right {
+      text-align: right;
+  }
+}

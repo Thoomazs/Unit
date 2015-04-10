@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Rating Block
+   ========================================================================== */
+
+.rating {
+  $hover-color : $pink-color;
+  $blur-color : #999;
+  unicode-bidi  : bidi-override;
+  text-align    : left;
+  height        : 15px;
+  line-height   : 1;
+  white-space   : nowrap;
+  overflow      : hidden;
+  text-overflow : ellipsis;
+
+  &--hover:hover {
+    .rating__star:before {
+      content : $fa-var-star !important;
+      color   : $blur-color !important;
+    }
+  }
+
+  &.stars {
+    display      : inline-block;
+    direction    : rtl;
+    padding-left : 4px;
+
+    &.star {
+      @include fa-icon;
+      font-weight    : normal;
+      font-style     : normal;
+      display        : inline-block;
+      font-size      : 15px;
+      line-height    : 15px;
+      vertical-align : middle;
+      float          : right;
+      width          : 16px;
+      height         : 15px;
+      cursor         : pointer;
+
+      &:before {
+        text-align : left;
+        content    : $fa-var-star;
+        color      : $blur-color;
+      }
+
+      &-half:after {
+        @include position(absolute, 0, null, null, 0);
+        z-index : -1;
+        content : $fa-var-star;
+        color   : $blur-color;
+      }
+
+      &-half:before {
+        content : $fa-var-star-half;
+        color   : $hover-color;
+      }
+
+      &-full:before {
+        content : $fa-var-star;
+        color   : $hover-color;
+      }
+    }
+  }
+
+  &-hover {
+    .star {
+      &:hover:before, &:hover ~ .star:before {
+        content : $fa-var-star !important;
+        color   : $hover-color !important;
+      }
+    }
+  }
+
+}

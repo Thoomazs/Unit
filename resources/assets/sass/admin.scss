@@ -1,0 +1,321 @@
+@charset "UTF-8";
+
+// globals
+// -----------------------------------------------------------------
+@import 'globals/functions';
+@import 'globals/variables';
+@import 'admin/variables';
+// base
+// -----------------------------------------------------------------
+@import 'base/document';
+@import 'base/buttons';
+@import 'base/form';
+@import 'base/breadcrumbs';
+@import 'base/pagination';
+@import 'base/flash-messages';
+@import 'base/tinymce';
+
+// layout
+// -----------------------------------------------------------------
+
+#admin {
+
+  body {
+    background  : white;
+    color       : $text-color;
+    padding-top : 83px;
+  }
+
+  .container {
+    width   : auto !important;
+    padding : 0;
+
+    & > .row {
+      margin-right : 0;
+      & > div:last-child {
+        padding-right : 0;
+      }
+    }
+  }
+
+  .tooltip {
+    .tooltip-inner {
+      background : rgba(255, 255, 255, 0.8);
+      color      : $text-color;
+      border     : 1px solid $border-light;
+      min-width  : 80px;
+    }
+
+    .tooltip-arrow {
+      display : none;
+    }
+  }
+
+  $header-color : rgba(66, 139, 202, 0.95);
+  #header {
+    position      : fixed;
+    top           : 0;
+    width         : 100%;
+    height        : 50px;
+    z-index       : 101;
+    background    : $header-color;
+    margin-bottom : 0;
+
+    .navbar {
+      margin : 0;
+      border : none;
+    }
+
+    .navbar-toggle {
+      color      : white;
+      margin     : 0;
+      @include border-radius(0);
+      padding    : 13px 15px 7px 15px;
+      background : darken($header-color, 3%);
+
+      &.collapsed, &:hover {
+        background : darken($header-color, 5%);
+      }
+    }
+    .navbar-brand {
+      height     : auto;
+      color      : white;
+      background : darken($header-color, 5%);
+    }
+
+    .nav {
+
+      & > li {
+        & > a {
+          color      : white;
+          background : none;
+
+          &:hover {
+            background : darken($header-color, 3%);
+          }
+        }
+
+        &.active, &.open {
+          & > a {
+            background : darken($header-color, 3%);
+          }
+        }
+
+        &:hover ul.dropdown-menu {
+          display : block;
+        }
+
+      }
+    }
+  }
+
+  #breadcrumbs {
+    background : rgba(255, 255, 255, .8);
+    position   : fixed;
+    top        : 50px;
+    width      : 100%;
+    height     : 32px;
+    z-index    : 100;
+  }
+
+  @media (max-width : 767px) {
+    #header {
+      position : absolute;
+
+      .navbar-collapse {
+        background : $header-color;
+        position   : absolute;
+        top        : 50px;
+        width      : 100%;
+        z-index    : 100;
+        box-shadow : none;
+        overflow   : hidden;
+        padding    : 0;
+        border     : none;
+
+        ul {
+          border-top : 1px solid darken($header-color, 5%);
+          margin     : 0;
+        }
+
+        .pull-right {
+          float : none !important;
+        }
+      }
+
+    }
+
+    #breadcrumbs {
+      position : absolute;
+    }
+  }
+
+  #main {
+    padding-bottom : 20px;
+  }
+
+  .controls {
+    overflow      : hidden;
+    padding       : 10px 15px;
+    background    : #EBEBEB;
+    border-top    : 1px solid $border;
+    margin-top    : -1px;
+    border-bottom : 1px solid $border;
+    @include row-padding(10px);
+  }
+
+  .table {
+
+    &.table-bordered {
+      border-right : none;
+      border-top   : none;
+      tr {
+        td:last-child, th:last-child {
+          border-right : none;
+        }
+      }
+    }
+    tr {
+      cursor : pointer;
+
+      th {
+        white-space : nowrap;
+        &.id {
+          text-align : center;
+          width      : 35px;
+        }
+      }
+      td {
+        white-space    : nowrap;
+        vertical-align : middle;
+
+        &.id {
+          text-align : center;
+          width      : 35px;
+          color      : $gray;
+        }
+
+        &.end {
+          background  : $bg-color;
+          padding     : 15px;
+          color       : $gray;
+          text-align  : center;
+          font-weight : 100;
+          font-size   : 200%;
+        }
+
+        &.message small {
+          white-space   : normal;
+          word-break    : break-all;
+          text-overflow : ellipsis;
+          overflow      : hidden;
+          display       : block;
+          height        : 18px;
+        }
+        .ip {
+          display       : block;
+          overflow      : hidden;
+          text-overflow : ellipsis;
+          width         : 110px;
+        }
+        &.actions {
+          text-align  : right;
+          white-space : nowrap;
+          width       : 10px;
+        }
+
+        .label {
+          font-size   : 100%;
+          font-weight : 400;
+          &.label-default {
+            background : $border-light;
+            border     : 1px solid $border;
+            color      : $text-color;
+          }
+        }
+      }
+
+      td, th {
+        border-color : $border;
+      }
+
+      &.open {
+        td {
+          vertical-align : top;
+
+          &.message small {
+            white-space : pre-wrap;
+            line-height : 22px;
+            font-size   : 13px;
+            margin      : -1px 0;
+            height      : auto;
+            word-break  : break-all;
+            word-wrap   : break-word;
+            font-family : Monaco, Menlo, Consolas, "Courier New", monospace;
+          }
+        }
+      }
+
+      &.no-hover {
+        & > td {
+          background : none !important;
+        }
+      }
+
+      &.active {
+        td {
+          background : #e8e8e8;
+        }
+      }
+    }
+  }
+
+  .admin-logger-index {
+    .table {
+      td {
+        width : 20px;
+
+        &.message {
+          width : auto;
+        }
+      }
+    }
+  }
+
+  .row.form {
+    margin-left  : 0 !important;
+    margin-right : 15px !important;
+  }
+
+  .form {
+    hr {
+      border-top : 1px solid $border;
+    }
+
+    .close {
+      margin-left : 10px;
+    }
+
+    label {
+      font-size : 18px;
+    }
+
+    .well {
+      @include border-radius($border-radius);
+      box-shadow     : none;
+      background     : #eff1f3;
+      border         : 1px solid #cccccc;
+      height         : auto;
+      padding        : 15px;
+      padding-bottom : 0;
+
+      .form-group {
+        margin-bottom : 15px !important;
+      }
+      label {
+        font-size : 14px !important;
+      }
+    }
+
+  }
+}

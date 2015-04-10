@@ -1,0 +1,30 @@
+// main background color
+$bg-color : #EEEEEE;
+$text-color : #343434;
+
+$border : #D0D0D0;
+$border-light : #CDCDCD;
+
+$gray : #707070;
+$blue : #337AB7 !default;
+$green : #5CB85C !default;
+$lightBlue : #5BC0DE !default;
+$orange : #F0AD4E !default;
+$red : #D9534F !default;
+
+$primary: $blue;
+
+$border-radius: 0;
+
+// img-path
+$img-path : '../../img/';
+
+$v-margin : 20px;
+//media-queries
+//$mobile-menu-width: 55%;
+
+//media-queries
+$desktop : "only screen and (min-width: 75em)";
+$tablet-p : "only screen and (max-width: 75em) and (min-width: 50em)";
+$tablet-l : "only screen and (max-width: 50em) and (min-width: 30em)";
+$phone-p : "only screen and (max-width: 30em)";

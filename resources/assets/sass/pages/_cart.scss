@@ -1,0 +1,235 @@
+ul.cart-title {
+  overflow: hidden;
+  padding-left: 0px;
+  margin-top: 10px;
+
+  li {
+    padding: 0px;
+    list-style: none;
+    float: left;
+    a {
+      color: #d9d9d9;
+      font-size: 20px;
+      line-height: 20px;
+      margin: 0px;
+      i {
+        margin: 0px 15px;
+      }
+    }
+
+    &.active {
+      a {
+        font-weight: 500;
+        color: #717171;
+      }
+    }
+  }
+}
+
+ul.cart-items {
+  list-style: none;
+  padding: 0;
+
+  li.cart-item {
+    padding-bottom: $v-margin;
+    border-bottom: 1px solid $border;
+    margin-bottom: $v-margin;
+
+    .row {
+
+      .cart-item-name, .cart-item-price, .cart-item-remove {
+        height: 60px;
+        line-height: 60px;
+        margin: 0;
+      }
+
+      & > div {
+
+        img {
+          max-height: 60px;
+          margin-right: 15px;
+          float: left;
+        }
+
+        a {
+          color: $text-color;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+          margin: 0;
+          line-height: inherit;
+        }
+
+        select, input {
+          display: inline-block;
+        }
+      }
+
+      .cart-item-remove form button {
+      }
+
+      .cart-item-quantity {
+        form {
+          padding: 14px 0 12px;
+        }
+      }
+
+    }
+  }
+
+  &.summary {
+    li.cart-item {
+      padding-bottom: 15px;
+      border-bottom: 1px solid $border;
+      margin-bottom: 15px;
+
+      .row {
+
+        .cart-item-title, .cart-item-price, .cart-item-quantity {
+          height: 40px;
+          line-height: 40px;
+          margin: 0;
+        }
+
+        & > div {
+
+          img {
+            max-height: 40px;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+//
+//
+//
+//
+//
+//
+//
+//#page #shopping-cart {
+//    .cart-title {
+//        margin-bottom: 15px;
+//
+//        h1 {
+//            margin: 0;
+//        }
+//        ul {
+//            overflow: hidden;
+//            padding-left: 0px;
+//            li {
+//                padding: 0px;
+//                list-style: none;
+//                float: left;
+//                a {
+//                    color: rgb(217, 217, 217);
+//                    font-size: 16px;
+//                    line-height: 20px;
+//                    margin: 0px;
+//
+//                    i {
+//                        margin: 0px 15px;
+//                    }
+//                }
+//                &.active a {
+//                    font-weight: 500;
+//                    color: @textColor;
+//                }
+//
+//                &.phone {
+//                    i {
+//                        color: rgb(217, 217, 217);
+//                        font-size: 18px;
+//                        vertical-align: bottom;
+//                    }
+//
+//                    span {
+//                        color: rgb(217, 217, 217);
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    .cart-content {
+//        .alert {
+//            margin-bottom: 0;
+//        }
+//
+//
+//        .cart-delivery-information {
+//            table {
+//                tr {
+//                    td, th {
+//                        padding: 5px 15px;
+//                        padding-left: 0;
+//                    }
+//                }
+//            }
+//        }
+//
+//        .hidden-box {
+//            background: @backgroundLightGray;
+//            overflow: hidden;
+//            border: 1px solid @border;
+//            .border-radius(3px);
+//            padding: 7px 10px;
+//            margin-left: -15px;
+//            margin-top: 5px;
+//            ul {
+//                margin: -2px 0;
+//                padding: 0;
+//                li {
+//                    margin-bottom: 2px;
+//                }
+//            }
+//            &.road {
+//                i {
+//                    vertical-align: middle;
+//                    font-size: 24px;
+//                }
+//            }
+//        }
+//
+//        .delivery-date {
+//            .form-control[readonly] {
+//                background: none;
+//                cursor: pointer;
+//            }
+//            .hidden-box {
+//                display: block !important;
+//                margin-left: 0;
+//
+//                .check {
+//                    visibility: hidden;
+//                    position: relative;
+//                    top: -1px;
+//                    margin-left: 5px;
+//                }
+//            }
+//        }
+//
+//        .cart-price {
+//            line-height: 30px;
+//            span {
+//                vertical-align: middle;
+//                margin-right: 7px;
+//                &:last-child {
+//                    margin-right: 0;
+//                }
+//            }
+//        }
+//        .cart-controls {
+//            .terms-and-conditions {
+//                background: url('/public/img/cikcak.png') repeat-x left center;
+//                margin-bottom: 10px;
+//                span {
+//                    padding: 0px 5px;
+//                    background: white;
+//                }
+//            }
+//        }
+//    }
+//}
