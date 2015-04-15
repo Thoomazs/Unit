@@ -140,3 +140,6 @@
    */
 
     Route::get( '/', [ 'as' => 'home', 'uses' => 'HomeController@index' ] );
+
+    // JUST TESTing things
+    Route::get( '/nonExistingPage', 'Error404Controller@fakeMethod');
