@@ -1,4 +1,4 @@
-<?php namespace App\Handlers\Events;
+<?php namespace App\Handlers\Events\Auth;
 
 use App\Events\UserWasRegistered;
 use Illuminate\Contracts\Auth\Guard as Auth;

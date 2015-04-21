@@ -1,6 +1,6 @@
 <?php namespace App\Providers;
 
-use App\Handlers\Events\Auth\TransferShoppingCartFromTempUser;
+use App\Handlers\Events\Auth\LoginAfterRegistration;
 use App\Handlers\Events\Logger\LogEntitiesCreation;
 use App\Handlers\Events\Logger\LogEntitiesDeletion;
 use App\Handlers\Events\Logger\LogEntitiesUpdate;
@@ -20,9 +20,7 @@ class EventServiceProvider extends ServiceProvider
                           'entity.updated*'        => [ LogEntitiesUpdate::class, ],
                           'entity.deleted*'        => [ LogEntitiesDeletion::class, ],
                           'illuminate.log'         => [ LogToDatabase::class, ],
-                          'auth.login'             => [ TransferShoppingCartFromTempUser::class, ],
-                          UserWasRegistered::class => [ SendWelcomeEmail::class,
-                                                        LoginAfterRegistration::class, ], ];
+                          UserWasRegistered::class => [ LoginAfterRegistration::class, ], ];
 
     /**
      * Register any other events for your application.
