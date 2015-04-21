@@ -14,7 +14,7 @@ class BoardsUser extends Model
      */
     protected $hidden = [ ];
 
-    protected $fillable = [ 'like', 'board_id', 'user_id', 'name' ];
+    protected $fillable = [ 'like', 'board_id', 'user_id', 'name', 'ready' ];
 
     public function board()
     {

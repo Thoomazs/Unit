@@ -16,14 +16,14 @@ class PostItForm extends Form
 
         $this->add( 'board_id', 'hidden', [ 'default_value' => $this->getData('board_id')]);
 
-        $this->add( 'text', 'textarea', [ 'label' => trans( 'common.Description' ).':', 'attr' => [ 'data-resize' => 'true' ] ] );
+        $this->add( 'text', 'textarea', [ 'label' => false, 'attr' => [ 'data-resize' => 'true', 'rows' => 2, 'placeholder' => 'Zadejte další bod' ] ] );
 
 
-        $this->add( 'type', 'select', [ 'label'   => trans( 'common.Superior' ).':',
+        $this->add( 'type', 'select', [ 'label'   => false,
                                         'choices' => [ 'START' => 'START', 'STOP' => 'STOP', 'KEEP DOING' => 'KEEP DOING' ] ] );
 
 
-        $this->add( 'store', 'submit', [ 'label' => trans( 'common.'.( ( $this->model ) ? 'Edit' : 'Store' ) ),
-                                         'attr'  => [ 'class' => 'btn btn-lg btn-block btn-'.( ( $this->model ) ? 'success' : 'primary' ) ] ] );
+        $this->add( 'store', 'submit', [ 'label' => 'Přidat',
+                                         'attr'  => [ 'class' => 'btn btn-block btn-success' ] ] );
     }
 }

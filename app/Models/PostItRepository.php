@@ -1,7 +1,6 @@
 <?php namespace App\Models;
 
 use App\Support\Collection;
-use App\Support\Repositories\Traits\Slugable;
 use App\Support\Repository;
 
 /**
@@ -30,7 +29,7 @@ class PostItRepository extends Repository
      */
     public function addBasicQuery()
     {
-        return $this->getQuery()->with( 'author' )->with( 'board' )->orderBy( 'type', 'DESC' )->orderBy('id', 'DESC');
+        return $this->getQuery()->with( 'author' )->with( 'board' )->orderBy( 'type', 'DESC' )->orderBy( 'id', 'DESC' );
     }
 
     /**
@@ -47,6 +46,11 @@ class PostItRepository extends Repository
         return $this;
     }
 
+    /**
+     * @param $id
+     *
+     * @return $this
+     */
     public function board( $id )
     {
         $this->query = $this->getQuery()->where( 'board_id', '=', $id );
@@ -55,6 +59,11 @@ class PostItRepository extends Repository
     }
 
 
+    /**
+     * @param $id
+     *
+     * @return $this
+     */
     public function user( $id )
     {
         $this->query = $this->getQuery()->where( 'user_id', '=', $id );
@@ -63,9 +72,29 @@ class PostItRepository extends Repository
     }
 
     /**
+     * @return $this
+     */
+    public function hidden()
+    {
+        $this->query = $this->getQuery()->where( 'visible', '=', 0 );
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function visible()
+    {
+        $this->query = $this->getQuery()->where( 'visible', '=', 1 );
+
+        return $this;
+    }
+
+    /**
      * Fill data to model instance
      *
-     * @param PostIt      $role
+     * @param PostIt     $role
      * @param Collection $data
      *
      * @return mixed

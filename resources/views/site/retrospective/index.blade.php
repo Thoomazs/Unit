@@ -31,13 +31,14 @@
 
 
 
-    <hr/>
-
+    <h2 class="page-header text-center"> Moje sprinty </h2>
     <ul class="list-group">
         @foreach($boards as $board)
-            <li class="list-group-item">
-                <a href="{{ route('retrospective.show', [$board->slug]) }}">
-                    {{ $board->name }}
+            <li class="list-group-item text-center col-sm-6 col-sm-offset-3">
+                    {{ $board->name }} – {{ $board->author->name }}
+
+                <a href="{{ route('retrospective.show', [$board->slug]) }}" class="pull-right btn btn-xs btn-info" style="padding: 0 10px;">
+                    <i class="fa fa-caret-right"></i>
                 </a>
             </li>
         @endforeach

@@ -23,6 +23,6 @@ class PostIt extends Model
 
     public function author()
     {
-        return $this->hasOne( 'App\Models\User', "id", "author_id" );
+        return $this->hasOne( 'App\Models\User', "id", "user_id" );
     }
 }

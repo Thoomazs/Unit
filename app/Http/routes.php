@@ -123,6 +123,8 @@
 
         Route::get( '/postit/delete/{id}', [ 'as' => 'retrospective.postit.delete', 'uses' => 'HomeController@deletePostIt' ] );
 
+        Route::get( '/postit/publish/{id}', [ 'as' => 'retrospective.postit.publish', 'uses' => 'HomeController@publishPostIt' ] );
+
         Route::post( '/done', [ 'as' => 'retrospective.done', 'uses' => 'HomeController@' ] );
     } );
 
