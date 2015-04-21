@@ -86,6 +86,18 @@ class BoardRepository extends Repository
     }
 
     /**
+     * @param hash
+     *
+     * @return $this
+     */
+    public function hash( $hash )
+    {
+        $this->query = $this->getQuery()->whereHash( $hash );
+
+        return $this;
+    }
+
+    /**
      * Fill data to model instance
      *
      * @param Board      $role

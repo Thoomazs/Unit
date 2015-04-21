@@ -126,6 +126,10 @@
         Route::get( '/postit/publish/{id}', [ 'as' => 'retrospective.postit.publish', 'uses' => 'HomeController@publishPostIt' ] );
 
         Route::post( '/done', [ 'as' => 'retrospective.done', 'uses' => 'HomeController@' ] );
+
+        Route::get( '/invite/{hash}', [ 'as' => 'retrospective.invite', 'uses' => 'HomeController@invite' ] );
+
+        Route::post( '/join', [ 'as' => 'retrospective.join', 'uses' => 'HomeController@joinBoard' ] );
     } );
 
     /*

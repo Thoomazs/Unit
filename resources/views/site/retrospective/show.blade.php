@@ -19,6 +19,11 @@
             <h1 class="page-header no-margin-top">
                 Retrospektiva: <b>{{ $board->name }}</b> – <span class="text-gray text-italic text-light">{{ $board->author->name }}</span>
             </h1>
+            <p>
+                <small>
+                Tuto retrospektivu můžete sdílet pomocí odkazu <a href="{{ route('retrospective.invite', $board->hash )}}" target="_blank">{{ route('retrospective.join', $board->hash )}}</a>
+                </small>
+            </p>
 
             <div class="row">
                 <div class="col-sm-6">
