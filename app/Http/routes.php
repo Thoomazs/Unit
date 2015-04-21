@@ -81,6 +81,12 @@
 
     } );
 
+
+
+    Route::group( [ 'middleware' => [ 'auth' ], 'prefix' => 'board' ], function ()
+    {
+        Route::post( 'add-user', [ 'as' => 'board.add-user', 'uses' => 'BoardController@addUser' ] );
+    } );
     /*
     |--------------------------------------------------------------------------
     | Poker Planning site Routes
@@ -106,9 +112,18 @@
     Route::group( [ 'namespace' => 'Retrospective', 'middleware' => [ 'auth' ], 'prefix' => 'retro', ], function ()
     {
         Route::get( '/', [ 'as' => 'retrospective.index', 'uses' => 'HomeController@index' ] );
-        Route::get( 'join/{hash}', [ 'as' => 'retrospective.join', 'uses' => 'HomeController@joinBoard']);
+
+        Route::get( '/add', [ 'as' => 'retrospective.add', 'uses' => 'HomeController@addBoard' ] );
+
         Route::get( '/{slug}', [ 'as' => 'retrospective.show', 'uses' => 'HomeController@show' ] );
-        Route::post( 'add', [ 'as' => 'retrospective.add', 'uses' => 'HomeController@addBoard' ] );
+
+        Route::get( '/ready/{id}', [ 'as' => 'retrospective.user.ready', 'uses' => 'HomeController@ready' ] );
+
+        Route::post( '/postit/add', [ 'as' => 'retrospective.postit.add', 'uses' => 'HomeController@addPostIt' ] );
+
+        Route::get( '/postit/delete/{id}', [ 'as' => 'retrospective.postit.delete', 'uses' => 'HomeController@deletePostIt' ] );
+
+        Route::post( '/done', [ 'as' => 'retrospective.done', 'uses' => 'HomeController@' ] );
     } );
 
     /*

@@ -6,6 +6,7 @@ use App\Models\BoardsUserRepository;
 use App\Models\PostItRepository;
 use App\Models\ProductRepository;
 use App\Models\Type;
+use App\Models\UserRepository;
 use App\Support\Controller as BaseController;
 
 class HomeController extends BaseController
@@ -26,26 +27,46 @@ class HomeController extends BaseController
      *
      * @return Response
      */
-    public function index()
+    public function index(UserRepository $userRepository)
     {
-        $boards = $this->repo->retrospective()->all();
+        $boards = $userRepository->find($this->user)->boards;
 
         return view( 'site.retrospective.index', compact( 'boards' ) );
     }
 
-    public function show( $slug, PostItRepository $postItRepository)
+    /**
+     * Show dashboard
+     *
+     * @param                  $slug
+     * @param PostItRepository $postItRepository
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show( $slug, PostItRepository $postItRepository, BoardsUserRepository $boardsUserRepository)
     {
+        // get board
         $board = $this->repo->retrospective()->slug( $slug )->first();
 
+        // if it not exist -> abort
         if ( is_null( $board ) ) \App::abort( 404 );
 
+        // board users
+        $user = $boardsUserRepository->board($board->id)->user($this->user)->first();
+
+        // generate form to add post-it
         $form = \FormBuilder::create( 'PostItForm', [ 'data' => [ 'board_id' => $board->id ] ] );
 
-        $postIts = $postItRepository->board($board->id)->all();
+        // get all post-its
+        $postIts = $postItRepository->board($board->id)->user($user->user)->all();
 
-        return view( 'site.retrospective.show', compact( 'board', 'form', 'postIts' ) );
+        return view( 'site.retrospective.show', compact( 'board', 'form', 'postIts', 'user' ) );
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addBoard( Request $request, BoardsUserRepository $boardUserRepository )
     {
         $data                = $request->all();
@@ -65,15 +86,51 @@ class HomeController extends BaseController
         return redirect()->route( 'retrospective.show', $board->slug );
     }
 
+
+    /**
+     * Add new post-it
+     *
+     * @param Request          $request
+     * @param PostItRepository $postItRepository
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addPostIt( Request $request, PostItRepository $postItRepository )
     {
-        $board = $this->repo->retrospective()->find($request->get('board_id'));
-
+        // data
         $data = $request->all();
         $data['user_id'] = $this->user;
 
-        $postItRepository->create($data);
+        //create new post-it
+        $postIt = $postItRepository->create($data);
 
-        return redirect()->route( 'retrospective.show', $board->slug );
+        // redirect to board
+        return redirect()->route( 'retrospective.show', $postIt->board->slug );
+    }
+
+    /**
+     * Delete post-it
+     *
+     * @param                  $id
+     * @param PostItRepository $postItRepository
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deletePostIt( $id, PostItRepository $postItRepository )
+    {
+        // get post id instance
+        $postIt = $postItRepository->find($id);
+
+        // not exist
+        if ( is_null( $postIt ) ) \App::abort( 404 );
+
+        // not author
+        if( $postIt->user_id !== $this->user)  \App::abort( 501 );
+
+        // delete
+        $postItRepository->delete($postIt->id);
+
+        // redirect to board
+        return redirect()->route( 'retrospective.show', $postIt->board->slug );
     }
 }
