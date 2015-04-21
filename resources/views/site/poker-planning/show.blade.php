@@ -2,8 +2,9 @@
 
 @section('content')
 
+    <a href="{{ route('poker-planning.index') }}">Zpět</a><br /><br />
 
-    RETRO name: {{ $board->name }}, author {{ $board->author->name }} <br /><br />
+    Název: {{ $board->name }}<br /> Autor: {{ $board->author->name }} <br /><br />
 
 
     @if(isset($buttonColor->value))
