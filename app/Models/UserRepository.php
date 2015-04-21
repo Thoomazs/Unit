@@ -65,8 +65,6 @@ class UserRepository extends Repository
 
         if ( $data->isEmpty( 'password' ) ) $data->forget( 'password' );
 
-        //        $data->address_id = $this->addressRepo->getAddressId( $data );
-
         $user->fill( $data->toArray() );
 
         $user->save();

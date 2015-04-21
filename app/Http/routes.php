@@ -24,23 +24,10 @@
             return App\Models\Role::find( $id );
         } );
 
-        Route::bind( "products", function ( $id )
-        {
-            return App\Models\Product::find( $id );
-        } );
-
-        Route::bind( "categories", function ( $id )
-        {
-            return App\Models\Category::find( $id );
-        } );
 
         Route::resource( 'users', 'UserController' );
 
         Route::resource( 'roles', 'RoleController' );
-
-        Route::resource( 'products', 'ProductController' );
-
-        Route::resource( 'categories', 'CategoryController' );
 
         Route::resource( 'log', 'LogController' );
 
@@ -101,34 +88,9 @@
     |
     */
 
-    Route::group( [ 'namespace' => 'Shop' ], function ()
+    Route::group( [ 'namespace' => 'PokerPlanning' ], function ()
     {
-        Route::bind( "product", function ( $slug )
-        {
-            return App\Models\Product::whereSlug( $slug )->first();
-        } );
-
-        Route::get( 'products', [ 'as' => 'products.index', 'uses' => 'ProductController@getIndex' ] );
-        Route::get( 'product/{product}', [ 'as' => 'products.detail', 'uses' => 'ProductController@getDetail' ] );
-        Route::post( 'product/{product}/send', [ 'as' => 'products.send', 'uses' => 'ProductController@postQuery' ] );
-
-
-        // Cart
-        Route::get( 'shopping-cart', [ 'as' => 'cart.show', 'uses' => 'CartController@getCart' ] );
-        Route::post( 'shopping-cart/add', [ 'as' => 'cart.add', 'uses' => 'CartController@postAdd' ] );
-        Route::delete( 'shopping-cart/delete', [ 'as' => 'cart.delete', 'uses' => 'CartController@postDelete' ] );
-        Route::patch( 'shopping-cart/update', [ 'as' => 'cart.update', 'uses' => 'CartController@postUpdate' ] );
-
-        Route::get( 'shopping-cart/delivery-information', [ 'as' => 'cart.delivery-information', 'uses' => 'CartController@getDeliveryInformation' ] );
-        Route::post( 'shopping-cart/delivery-information', 'CartController@postDeliveryInformation' );
-
-        Route::get( 'shopping-cart/shipping-and-payment', [ 'as' => 'cart.shipping-and-payment', 'uses' => 'CartController@getShippingAndPayment' ] );
-        Route::post( 'shopping-cart/shipping-and-payment', 'CartController@postShippingAndPayment' );
-
-        Route::get( 'shopping-cart/summary', [ 'as' => 'cart.summary', 'uses' => 'CartController@getSummary' ] );
-        Route::post( 'shopping-cart/summary', 'CartController@postSummary' );
-
-        Route::get( 'shopping-cart/thank-you', [ 'as' => 'cart.thank-you', 'uses' => 'CartController@getThankYou' ] );
+        Route::get( '/', [ 'as' => 'poker-planing.index', 'uses' => 'HomeController@index' ] );
     } );
 
 
@@ -140,6 +102,3 @@
    */
 
     Route::get( '/', [ 'as' => 'home', 'uses' => 'HomeController@index' ] );
-
-    // JUST TESTing things
-    Route::get( '/nonExistingPage', 'Error404Controller@fakeMethod');

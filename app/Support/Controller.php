@@ -27,8 +27,6 @@ abstract class Controller extends BaseController
     function __construct()
     {
         $this->user = $this->_setUser();
-
-        $this->_setCart();
     }
 
     /**
@@ -42,13 +40,4 @@ abstract class Controller extends BaseController
 
         return null;
     }
-
-    /**
-     * Set cart data to view
-     */
-    private function _setCart()
-    {
-        View::share( 'cart', OrderRepository::get( $this->user ) );
-    }
-
 }

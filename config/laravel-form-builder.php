@@ -21,7 +21,7 @@ return [
     'child_form'    => 'laravel-form-builder::child_form',
     'collection'    => 'laravel-form-builder::collection',
 
-    'default_namespace' => '',
+    'default_namespace' => 'App\Forms',
 
     'custom_fields' => [
 //        'datetime' => 'App\Forms\Fields\Datetime'

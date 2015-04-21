@@ -34,8 +34,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                             'lastname',
                             'email',
                             'password',
-                            'slug',
-                            'address_id' ];
+                            'slug', ];
 
 
     public function getNameAttribute()
@@ -59,32 +58,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         return false;
     }
-
-    public function address()
-    {
-        return $this->hasOne( 'App\Models\Address', "id", "address_id" );
-    }
-
-    public function getStreetAttribute()
-    {
-        return ( $this->address ) ? $this->address->street : null;
-    }
-
-    public function getCityAttribute()
-    {
-        return ( $this->address ) ? $this->address->city : null;
-    }
-
-
-    public function getPostcodeAttribute()
-    {
-        return ( $this->address ) ? $this->address->postcode : null;
-    }
-
-
-    public function getStateAttribute()
-    {
-        return ( $this->address ) ? $this->address->state : null;
-    }
-
 }

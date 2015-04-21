@@ -12,6 +12,11 @@
 
         <div class="collapse navbar-collapse" id="header-collapse">
 
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{ route('poker-planing.index') }}">Poker</a>
+                </li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 @section('nav-right')
 
@@ -37,13 +42,6 @@
                             <a href="{{ route('auth.register') }}">{{ trans('common.Register') }}</a>
                         </li>
                     @endif
-
-                    <li>
-                        <a href="{{ route('cart.show') }}">
-                            {{ trans('common.Cart') }}
-                            ( {{ $cart->price .' ' . trans('common.CURRENCY') }} / {{ $cart->count .' '. trans('ks') }} )
-                        </a>
-                    </li>
 
                 @show
             </ul>

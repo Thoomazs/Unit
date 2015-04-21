@@ -28,7 +28,7 @@ class AuthController extends Controller
      */
     public function getRegister()
     {
-        $form = \FormBuilder::create( 'App\Forms\Auth\RegisterForm' );
+        $form = \FormBuilder::create( 'Auth\RegisterForm' );
 
         return view( 'site.users.auth.register', compact( 'form' ) );
     }
@@ -56,7 +56,7 @@ class AuthController extends Controller
      */
     public function getLogin()
     {
-        $form = \FormBuilder::create( 'App\Forms\Auth\LoginForm' );
+        $form = \FormBuilder::create( 'Auth\LoginForm' );
 
         return view( 'site.users.auth.login', compact( 'form' ) );
     }

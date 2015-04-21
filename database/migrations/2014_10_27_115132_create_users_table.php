@@ -21,17 +21,12 @@
 
                 $table->string( 'firstname' );
                 $table->string( 'lastname' );
-                $table->string( 'slug' );
-                $table->string( 'phone', 20 );
-                $table->integer( 'address_id' )->unsigned()->nullable();
-
+                $table->string( 'slug' )->unique();
                 $table->string( 'password', 60 )->nullable();
-
 
                 $table->rememberToken();
                 $table->timestamps();
 
-                $table->foreign( 'address_id' )->references( 'id' )->on( 'addresses' )->onUpdate( 'cascade' )->onDelete( 'set null' );
             } );
         }
 
@@ -42,11 +37,6 @@
          */
         public function down()
         {
-            Schema::table( 'users', function ( Blueprint $table )
-            {
-                $table->dropForeign( 'users_address_id_foreign' );
-            } );
-
             Schema::drop( 'users' );
         }
 

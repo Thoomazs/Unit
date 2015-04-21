@@ -1,7 +1,7 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\PokerPlanning;
 
 use App\Models\ProductRepository;
-use App\Support\Controller as BaseCOntroller;
+use App\Support\Controller as BaseController;
 
 class HomeController extends BaseCOntroller
 {
@@ -17,9 +17,10 @@ class HomeController extends BaseCOntroller
      *
      * @return Response
      */
-    public function index( )
+    public function index()
     {
-        return view( 'site.homepage' );
+
+        return view( 'site.poker-planning.index' );
     }
 
 }
