@@ -64,6 +64,24 @@ class HomeController extends BaseController
     }
 
     /**
+     * Join board
+     *
+     * @param                  $hash
+     *
+     * @return \Illuminate\View\View
+     */
+    public function invite( $hash )
+    {
+        // get board
+        $board = $this->repo->retrospective()->hash( $hash )->first();
+
+        // if it not exist -> abort
+        if ( is_null( $board ) ) \App::abort( 404 );
+
+        return view( 'site.retrospective.invite', compact( 'board' ) );
+    }
+
+    /**
      * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse
