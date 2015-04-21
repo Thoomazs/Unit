@@ -14,20 +14,21 @@
         public function up()
         {
             // Creates the roles table
-            Schema::create( 'boards_type', function ( $table )
+            Schema::create( 'boards_type', function ( Blueprint $table )
             {
                 $table->increments( 'id' )->unsigned();
                 $table->string( 'name' );
             } );
 
             // Creates the roles table
-            Schema::create( 'boards', function ( $table )
+            Schema::create( 'boards', function ( Blueprint $table )
             {
                 $table->increments( 'id' )->unsigned();
                 $table->integer( 'type_id' )->unsigned();
                 $table->integer( 'author_id' )->unsigned();
                 $table->string( 'name' );
                 $table->string( 'slug' )->unique();
+                $table->tinyInteger( 'phase' )->usigned()->default( 1 );
                 $table->timestamps();
 
                 $table->foreign( 'type_id' )->references( 'id' )->on( 'boards_type' )->onUpdate( 'cascade' )->onDelete( 'cascade' );

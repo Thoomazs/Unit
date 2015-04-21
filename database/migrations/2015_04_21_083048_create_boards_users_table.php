@@ -15,10 +15,12 @@ class CreateBoardsUsersTable extends Migration {
 		Schema::create('boards_users', function(Blueprint $table)
 		{
 			$table->increments('id')->unsigned();
+			$table->integer('board_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->tinyInteger('like')->unsigned();
 			$table->timestamps();
 
+            $table->foreign('board_id')->references('id')->on('boards')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
