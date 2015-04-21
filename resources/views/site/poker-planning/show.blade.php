@@ -40,7 +40,7 @@
     </div>
 
     <div class="col-md-1">
-        <a @if($buttonColor->value == 13) class="btn btn-danger btn-block" @else class="btn btn-primary btn-block"  @endif href="{{ route('poker-planning.vote', [$board->slug, 13]) }}">C</a>
+        <a @if($buttonColor->value == 13) class="btn btn-danger btn-block" @else class="btn btn-primary btn-block"  @endif href="{{ route('poker-planning.vote', [$board->slug, 13]) }}"><i class="fa fa-coffee"></i></a>
     </div>
 
     @else
