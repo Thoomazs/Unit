@@ -79,7 +79,7 @@ class HomeController extends BaseController
         if ( is_null( $board ) ) \App::abort( 404 );
 
         // if it is owner, just show
-        if ( $this->user == $board->author_id || $board->hasUser( $this->user ) )
+        if ( $this->user == $board->author_id )//|| $board->hasUser( $this->user ) )
         {
             return redirect()->route( 'retrospective.show', $board->slug );
         }
