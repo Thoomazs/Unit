@@ -25,7 +25,7 @@
                     <p> Tuto retrospektivu můžete sdílet pomocí odkazu</p>
                 </div>
                 <div class="col-sm-7">
-                    <input class="form-control" id="add-link" type="text" value="{{ route('retrospective.join', $board->hash )}}" />
+                    <input class="form-control" id="add-link" type="text" value="{{ route('retrospective.invite', $board->hash )}}" />
                 </div>
 
                </div>
