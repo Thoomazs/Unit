@@ -2,7 +2,6 @@
 
 @section('content')
 
-    POKER
 
     {!! Form::open(['url'=>route('poker-planning.add')]) !!}
 

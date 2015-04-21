@@ -99,6 +99,7 @@
         Route::get( '/', [ 'as' => 'poker-planning.index', 'uses' => 'HomeController@index' ] );
         Route::get( '/{slug}', [ 'as' => 'poker-planning.show', 'uses' => 'HomeController@show' ] );
         Route::post( 'add', [ 'as' => 'poker-planning.add', 'uses' => 'HomeController@addBoard' ] );
+        Route::get( 'vote/{slug}/{value}', [ 'as' => 'poker-planning.vote', 'uses' => 'HomeController@vote' ] );
     } );
 
 

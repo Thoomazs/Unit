@@ -19,15 +19,22 @@
                          'password'   => bcrypt( 'heslo' ),
                          'created_at' => new DateTime,
                          'updated_at' => new DateTime ],
+            [ 'firstname'  => 'Vojta',
+                'lastname'   => 'Hájek',
+                'slug'       => 'vojta-haje',
+                'email'      => 'hajejo2@fit.cvut.cz',
+                'password'   => bcrypt( 'heslo' ),
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime ],
 
-                        [ 'firstname'  => 'Martin',
-                         'lastname'   => 'Tauchman',
-                         'slug'       => 'martin-tauchman',
-                         'email'      => 'mtauchman@gmail.com',
-                         'password'   => bcrypt( 'hesloHeslo' ),
-                         'created_at' => new DateTime,
-                         'updated_at' => new DateTime ]
-                        ];
+                        ], [ 'firstname'  => 'Martin',
+            'lastname'   => 'Tauchman',
+            'slug'       => 'martin-tauchman',
+            'email'      => 'mtauchman@gmail.com',
+            'password'   => bcrypt( 'hesloHeslo' ),
+            'created_at' => new DateTime,
+            'updated_at' => new DateTime ]
+                        ]];
 
             DB::table( 'users' )->insert( $users );
 
