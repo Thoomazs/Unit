@@ -15,15 +15,30 @@
                 @endforeach
             </ul>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-10">
             <h1 class="page-header no-margin-top">
                 Retrospektiva: <b>{{ $board->name }}</b> – <span class="text-gray text-italic text-light">{{ $board->author->name }}</span>
             </h1>
-            <p>
-                <small>
-                Tuto retrospektivu můžete sdílet pomocí odkazu <a href="{{ route('retrospective.invite', $board->hash )}}" target="_blank">{{ route('retrospective.join', $board->hash )}}</a>
-                </small>
-            </p>
+
+            <div class="row">
+                <div class="col-sm-5">
+                    <p> Tuto retrospektivu můžete sdílet pomocí odkazu</p>
+                </div>
+                <div class="col-sm-7">
+                    <input class="form-control" id="add-link" type="text" value="{{ route('retrospective.join', $board->hash )}}" />
+                </div>
+
+               </div>
+
+            <script type="text/javascript">
+                $( function() {
+                    $("#add-link" ).click( function() {
+                        $(this).select();
+                    })
+                })
+            </script>
+
+            <hr/>
 
             <div class="row">
                 <div class="col-sm-6">
