@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-sm-4">
-            <h2 class="page-header text-center"> Moje sprinty </h2>
+            <h2 class="page-header text-center"> Moje Retrospektivy </h2>
             @if(count($boards) > 0)
                 <ul class="list-group">
                     @foreach($boards as $board)
@@ -18,7 +18,7 @@
                 </ul>
             @else
                 <div class="text-gray text-thin text-center">
-                    Žádné aktivní sprinty
+                    Žádné aktivní retrospektivy
                 </div>
             @endif
 
@@ -26,7 +26,7 @@
         <div class="col-sm-8">
             <div class="jumbotron">
                 <h1 class="page-header text-center">
-                    Vytvořte nový Sprint
+                    Vytvořte novou Retrospektivu
                 </h1>
                 <hr/>
 

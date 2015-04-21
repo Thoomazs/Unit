@@ -2,8 +2,9 @@
 
 @section('content')
 
+    <a href="{{ route('poker-planning.index') }}">Zpět</a><br /><br />
 
-    RETRO name: {{ $board->name }}, author {{ $board->author->name }} <br /><br />
+    Název: {{ $board->name }}<br /> Autor: {{ $board->author->name }} <br /><br />
 
 
     @if(isset($buttonColor->value))
@@ -40,7 +41,7 @@
     </div>
 
     <div class="col-md-1">
-        <a @if($buttonColor->value == 13) class="btn btn-danger btn-block" @else class="btn btn-primary btn-block"  @endif href="{{ route('poker-planning.vote', [$board->slug, 13]) }}">C</a>
+        <a @if($buttonColor->value == 13) class="btn btn-danger btn-block" @else class="btn btn-primary btn-block"  @endif href="{{ route('poker-planning.vote', [$board->slug, 13]) }}"><i class="fa fa-coffee"></i></a>
     </div>
 
     @else

@@ -59,7 +59,11 @@ class HomeController extends BaseCOntroller
 
             $this->poker->create($data);
         } else {
-            $this->poker->getQuery()->where( "idUser", "=", $this->user )->where( "idStory", "=", $board->id )->first()->update(array("value" => $value));
+            if($marked->ready == 0) {
+                $this->poker->getQuery()->where("idUser", "=", $this->user)->where("idStory", "=", $board->id)->first()->update(array("value" => $value));
+            } else {
+                flash()->error("Nemůžete změnit své hodnocení, když jste ready!");
+            }
         }
 
         return redirect()->route( 'poker-planning.show', $slug );
@@ -80,7 +84,7 @@ class HomeController extends BaseCOntroller
     public function lst($slug) {
         $board = $this->repo->poker()->slug( $slug )->first();
 
-        $users = $this->poker->getQuery()->where("idStory", "=", $board->id)->where("ready", "=", 1)->first();
+        $users = $this->poker->getQuery()->with("users")->where("idStory", "=", $board->id)->where("ready", "=", 1)->get();
 
         return view( 'site.poker-planning.lst', compact( 'board' ) , compact("users"));
 

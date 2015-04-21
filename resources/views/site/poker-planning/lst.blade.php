@@ -2,10 +2,13 @@
 
 @section('content')
 
-    {{  @dump($users) }}
 
-    {{--@foreach($users as $user)--}}
-        {{--{{ $user->name  }}--}}
-    {{--@endforeach--}}
+    @foreach($users as $users2)
+        @foreach($users2->users as $user)
+            {{ $user->name }} {{ $users2->value }} <br />
+        @endforeach
+
+
+    @endforeach
 
 @stop

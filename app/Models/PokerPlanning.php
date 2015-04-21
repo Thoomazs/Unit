@@ -27,5 +27,8 @@ class PokerPlanning extends Model implements AuthenticatableContract, CanResetPa
 
     protected $fillable = [ 'id', 'idStory', 'idUser', 'value', 'ready' ];
 
-
+    public function users()
+    {
+        return $this->hasMany( 'App\Models\User', "id", "idUser" );
+    }
 }
