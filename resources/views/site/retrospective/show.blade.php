@@ -21,7 +21,7 @@
             </h1>
             <p>
                 <small>
-                Tuto retrospektivu můžete sdílet pomocí odkazu <a href="{{ route('retrospective.invite', $board->hash )}}" target="_blank">{{ route('retrospective.join', $board->hash )}}</a>
+                    Tuto retrospektivu můžete sdílet pomocí odkazu <a href="{{ route('retrospective.invite', $board->hash )}}" target="_blank">{{ route('retrospective.invite', $board->hash )}}</a>
                 </small>
             </p>
 

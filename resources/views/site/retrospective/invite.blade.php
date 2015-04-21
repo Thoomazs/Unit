@@ -16,7 +16,9 @@
                     <div class="form-relative">
                         {!! $errors->first('name', '<div class="form-error">:message</div>') !!}
 
-                        {!! Form::text('name', null, ['class' => 'form-control input-lg', 'autocomplete' => 'off', 'placeholder' => 'Název']) !!}
+                        {!! Form::text('name', null, ['class' => 'form-control input-lg', 'maxlength' => 255, 'autocomplete' => 'off', 'placeholder' => 'Vaše jméno zobrazené v retrospektivě']) !!}
+
+                        {!! Form::hidden('board_id', $board->id) !!}
                     </div>
                 </div>
 

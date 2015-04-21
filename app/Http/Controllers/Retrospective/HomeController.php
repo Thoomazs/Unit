@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Retrospective;
 
 use App\Http\Requests\Request;
+use App\Models\Board;
 use App\Models\BoardRepository;
 use App\Models\BoardsUserRepository;
 use App\Models\PostItRepository;
@@ -78,7 +79,34 @@ class HomeController extends BaseController
         // if it not exist -> abort
         if ( is_null( $board ) ) \App::abort( 404 );
 
+        // if it is owner, just show
+        if ( $this->user == $board->author_id || $board->hasUser( $this->user ) )
+            return redirect()->route( 'retrospective.show', $board->slug );
+
         return view( 'site.retrospective.invite', compact( 'board' ) );
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function joinBoard( Request $request, BoardsUserRepository $boardUserRepository )
+    {
+        $data = $request->all();
+
+        // get board
+        $board = $this->repo->retrospective()->find( $data['board_id'] );
+
+        // if it not exist -> abort
+        if ( is_null( $board ) ) \App::abort( 404 );
+
+        $data[ 'user_id' ] = $this->user;
+        $data[ 'like' ]    = 5;
+
+        $boardUserRepository->create( $data );
+
+        return redirect()->route( 'retrospective.show', $board->slug );
     }
 
     /**
