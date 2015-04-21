@@ -61,9 +61,10 @@ ul {
 }
 
 hr {
-  border-top-color: $border;
-  margin: $v-margin 0;
+  border-top-color : $border;
+  margin           : $v-margin 0;
 }
+
 .table {
   &-simple {
     th, td {
@@ -80,13 +81,12 @@ hr {
   margin-top : $v-margin;
 }
 
-
 .relative {
   position : relative;
 }
 
 .inline-block {
-  display: inline-block;
+  display : inline-block;
 }
 
 .text {
@@ -124,10 +124,18 @@ hr {
   }
 
   &-center {
-      text-align: center;
+    text-align : center;
   }
 
   &-right {
-      text-align: right;
+    text-align : right;
+  }
+
+  &-light {
+    font-weight : 100;
+  }
+
+  &-italic {
+    font-style: italic;
   }
 }

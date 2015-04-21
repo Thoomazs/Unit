@@ -21,7 +21,7 @@
         <div class="col-sm-4">
 
             <!-- Common.Add new Board Form Submit -->
-
+a
             <div class="form-group">
                 {!! Form::button(trans('common.Add new Board'), ['type' => 'submit', 'class' => 'btn btn-primary btn-block']) !!}
             </div>

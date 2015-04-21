@@ -22,7 +22,7 @@ class MyAccountController extends Controller
 
         if ( is_null( $user ) ) return redirect()->route( 'auth.login' );
 
-        $form = \FormBuilder::create( 'App\Forms\User\EditForm', [ 'model' => $user ] );
+        $form = \FormBuilder::create( 'User\EditForm', [ 'model' => $user ] );
 
         return view( 'site.users.profile', compact( 'user', 'form' ) );
     }

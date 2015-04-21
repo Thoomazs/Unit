@@ -32,7 +32,7 @@ class BoardRepository extends Repository
      */
     public function addBasicQuery()
     {
-        return $this->getQuery()->with( 'type' )->orderBy( 'name', 'ASC' );
+        return $this->getQuery()->with( 'type' )->with( 'users' )->orderBy( 'name', 'ASC' );
     }
 
     /**
