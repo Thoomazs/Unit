@@ -28,5 +28,4 @@ class PokerPlanning extends Model implements AuthenticatableContract, CanResetPa
     protected $fillable = [ 'id', 'idStory', 'idUser', 'value', 'ready' ];
 
 
-
 }

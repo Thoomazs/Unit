@@ -78,5 +78,5 @@
 
     function export( array $data )
     {
-        return var_export($data, true);
+        return var_export( $data, true );
     }

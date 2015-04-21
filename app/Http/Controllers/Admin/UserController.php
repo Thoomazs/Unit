@@ -4,7 +4,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateRequest;
 use App\Http\Requests\User\DestroyRequest;
 use App\Http\Requests\User\UpdateRequest;
-use App\Models\Role;
 use App\Models\User;
 use App\Models\UserRepository;
 use Illuminate\Http\Request;
@@ -48,7 +47,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $form =  \FormBuilder::create( 'App\Forms\Admin\UserForm', ['method' => 'POST', 'url' => route( 'admin.users.store' )] );
+        $form = \FormBuilder::create( 'App\Forms\Admin\UserForm', [ 'method' => 'POST', 'url' => route( 'admin.users.store' ) ] );
 
         return view( 'admin.users.create', compact( 'form' ) );
     }
@@ -62,7 +61,7 @@ class UserController extends Controller
     {
         $user = $this->repo->create( $request->all() );
 
-        flash()->success( trans('messages.User created') );
+        flash()->success( trans( 'messages.User created' ) );
 
         return redirect()->route( "admin.users.edit", [ $user->id ] );
     }
@@ -86,7 +85,7 @@ class UserController extends Controller
     {
         if ( is_null( $user ) ) return redirect()->route( 'admin.users.index' );
 
-        $form =  \FormBuilder::create( 'App\Forms\Admin\UserForm', ['method' => 'PATCH', 'url' => route( 'admin.users.update', [ $user->id ] ), 'model' => $user ] );
+        $form = \FormBuilder::create( 'App\Forms\Admin\UserForm', [ 'method' => 'PATCH', 'url' => route( 'admin.users.update', [ $user->id ] ), 'model' => $user ] );
 
         return view( 'admin.users.edit', compact( 'user', 'form' ) );
     }
@@ -100,7 +99,7 @@ class UserController extends Controller
     {
         $user = $this->repo->update( $request->all() );
 
-        flash()->success( trans('messages.User updated') );
+        flash()->success( trans( 'messages.User updated' ) );
 
         return redirect()->route( "admin.users.edit", [ $user->id ] );
     }
@@ -117,7 +116,7 @@ class UserController extends Controller
 
         $this->repo->delete( $user->id );
 
-        flash()->warning( trans('messages.User deleted') );
+        flash()->warning( trans( 'messages.User deleted' ) );
 
         return redirect()->route( "admin.users.index" );
     }

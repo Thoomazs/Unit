@@ -42,7 +42,7 @@ class Request extends FormRequest
      */
     public function data( $keys = null )
     {
-        $keys = is_array($keys) ? $keys : func_get_args();
+        $keys = is_array( $keys ) ? $keys : func_get_args();
 
         return Collection::make( ( $keys ) ? parent::only( $keys ) : parent::all() );
     }

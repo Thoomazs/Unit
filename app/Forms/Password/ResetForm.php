@@ -7,11 +7,11 @@ class ResetForm extends Form
     public function buildForm()
     {
 
-        $this->setMethod('POST');
+        $this->setMethod( 'POST' );
 
-        $this->setUrl(route('password.reset'));
+        $this->setUrl( route( 'password.reset' ) );
 
-        $this->add( 'token', 'hidden', [ 'default_value' => $this->getData('token') ] );
+        $this->add( 'token', 'hidden', [ 'default_value' => $this->getData( 'token' ) ] );
 
         $this->add( 'email', 'email', [ 'label' => trans( 'common.Email' ).':' ] );
 

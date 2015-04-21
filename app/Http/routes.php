@@ -82,7 +82,6 @@
     } );
 
 
-
     Route::group( [ 'middleware' => [ 'auth' ], 'prefix' => 'board' ], function ()
     {
         Route::post( 'add-user', [ 'as' => 'board.add-user', 'uses' => 'BoardController@addUser' ] );

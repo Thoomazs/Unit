@@ -6,9 +6,9 @@ class LoginForm extends Form
 {
     public function buildForm()
     {
-        $this->setMethod('POST');
+        $this->setMethod( 'POST' );
 
-        $this->setUrl(route('auth.login'));
+        $this->setUrl( route( 'auth.login' ) );
 
 
         $this->add( 'email', 'email', [ 'label' => trans( 'common.Email' ).':' ] );

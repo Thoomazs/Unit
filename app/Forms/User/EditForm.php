@@ -8,11 +8,11 @@ class EditForm extends Form
     public function buildForm()
     {
 
-        $this->setData('roles', toChoices( Role::all()));
+        $this->setData( 'roles', toChoices( Role::all() ) );
 
-        $this->setMethod('PATCH');
+        $this->setMethod( 'PATCH' );
 
-        $this->setUrl(route('my-account.profile'));
+        $this->setUrl( route( 'my-account.profile' ) );
 
         $this->add( 'id', 'hidden' );
 
@@ -34,6 +34,6 @@ class EditForm extends Form
 
 
         $this->add( 'edit', 'submit', [ 'label' => trans( 'common.Edit' ),
-                                         'attr'  => [ 'class' => 'btn btn-lg btn-block btn-success' ] ] );
+                                        'attr'  => [ 'class' => 'btn btn-lg btn-block btn-success' ] ] );
     }
 }

@@ -7,9 +7,9 @@ class RegisterForm extends Form
     public function buildForm()
     {
 
-        $this->setMethod('POST');
+        $this->setMethod( 'POST' );
 
-        $this->setUrl(route('auth.register'));
+        $this->setUrl( route( 'auth.register' ) );
 
 
         $this->add( 'firstname', 'text', [ 'label' => trans( 'common.Firstname' ).':' ] );

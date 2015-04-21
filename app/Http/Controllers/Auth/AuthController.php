@@ -44,7 +44,7 @@ class AuthController extends Controller
     {
         $user = $userRepository->create( $request->all() );
 
-        \Event::fire( new UserWasRegistered($user) );
+        \Event::fire( new UserWasRegistered( $user ) );
 
         return redirect()->route( "home" );
     }

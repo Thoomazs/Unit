@@ -6,9 +6,9 @@ class EmailForm extends Form
 {
     public function buildForm()
     {
-        $this->setMethod('POST');
+        $this->setMethod( 'POST' );
 
-        $this->setUrl(route('password.email'));
+        $this->setUrl( route( 'password.email' ) );
 
         $this->add( 'email', 'email', [ 'label' => trans( 'common.Email' ).':' ] );
 

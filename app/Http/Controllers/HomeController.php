@@ -17,7 +17,7 @@ class HomeController extends BaseCOntroller
      *
      * @return Response
      */
-    public function index( )
+    public function index()
     {
         return view( 'site.homepage' );
     }

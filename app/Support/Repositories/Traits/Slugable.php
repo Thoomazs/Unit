@@ -23,7 +23,7 @@ trait Slugable
         $slug = ( $model and $model->slug ) ? $model->slug : $base_slug;
 
         // test until slug is available
-        for($i = 1; $this->getModel()->whereSlug( $slug )->where( "id", "!=", $id )->first(); $i++) $slug = $base_slug."-".$i;
+        for ( $i = 1; $this->getModel()->whereSlug( $slug )->where( "id", "!=", $id )->first(); $i++ ) $slug = $base_slug."-".$i;
 
         return $slug;
     }

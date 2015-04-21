@@ -7,7 +7,7 @@ class UserForm extends Form
 {
     public function buildForm()
     {
-        $this->setData('roles', toChoices( Role::all()));
+        $this->setData( 'roles', toChoices( Role::all() ) );
 
         if ( $this->model ) $this->add( 'id', 'hidden' );
 

@@ -14,7 +14,7 @@ class PostItForm extends Form
 
         if ( $this->model ) $this->add( 'id', 'hidden' );
 
-        $this->add( 'board_id', 'hidden', [ 'default_value' => $this->getData('board_id')]);
+        $this->add( 'board_id', 'hidden', [ 'default_value' => $this->getData( 'board_id' ) ] );
 
         $this->add( 'text', 'textarea', [ 'label' => false, 'attr' => [ 'data-resize' => 'true', 'rows' => 2, 'placeholder' => 'Zadejte další bod' ] ] );
 

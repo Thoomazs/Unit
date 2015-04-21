@@ -16,7 +16,7 @@ class HomeController extends BaseCOntroller
     {
         parent::__construct();
 
-        $this->repo = $repository;
+        $this->repo  = $repository;
         $this->poker = $poker;
     }
 
@@ -30,7 +30,7 @@ class HomeController extends BaseCOntroller
     {
         $boards = $this->repo->poker()->all();
 
-        return view( 'site.poker-planning.index', compact('boards') );
+        return view( 'site.poker-planning.index', compact( 'boards' ) );
 
     }
 
@@ -39,20 +39,21 @@ class HomeController extends BaseCOntroller
     {
         $board = $this->repo->poker()->slug( $slug )->first();
 
-        $buttonColor = $this->poker->getQuery()->where("idUser", "=", $this->user)->where("idStory", "=", $board->id)->first();
+        $buttonColor = $this->poker->getQuery()->where( "idUser", "=", $this->user )->where( "idStory", "=", $board->id )->first();
 
-        if( is_null($board)) return;
+        if ( is_null( $board ) ) return;
 
-        return view( 'site.poker-planning.show', compact('board'), compact('buttonColor'));
+        return view( 'site.poker-planning.show', compact( 'board' ), compact( 'buttonColor' ) );
     }
 
-    public function vote($slug, $value) {
+    public function vote( $slug, $value )
+    {
         $board = $this->repo->poker()->slug( $slug )->first();
 
-        $data["idUser"] = $this->user;
-        $data["idStory"] = $board->id;
-        $data["value"] = $value;
-        $data["ready"] = 0;
+        $data[ "idUser" ]  = $this->user;
+        $data[ "idStory" ] = $board->id;
+        $data[ "value" ]   = $value;
+        $data[ "ready" ]   = 0;
 
         $this->poker->create( $data );
 
@@ -62,9 +63,9 @@ class HomeController extends BaseCOntroller
 
     public function addBoard( Request $request )
     {
-        $data              = $request->all();
-        $data[ 'author_id' ]  = $this->user;
-        $data[ 'type_id' ] = Type::whereName( 'Poker Planning' )->first()->id;
+        $data                = $request->all();
+        $data[ 'author_id' ] = $this->user;
+        $data[ 'type_id' ]   = Type::whereName( 'Poker Planning' )->first()->id;
 
         $board = $this->repo->create( $data );
 

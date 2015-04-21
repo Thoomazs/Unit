@@ -81,9 +81,9 @@ abstract class Repository
 
         $this->query = null;
 
-        if(count($data) == 0) return null;
+        if ( count( $data ) == 0 ) return null;
 
-        return $data[0];
+        return $data[ 0 ];
     }
 
     /**

@@ -16,12 +16,10 @@ class RoleForm extends Form
         $this->add( 'name', 'text', [ 'label' => trans( 'common.Name' ).':' ] );
 
         $this->add( 'users', 'select', [ 'label'       => trans( 'common.Users' ).':',
-                                              'multiple'    => true,
-                                              'empty_value' => trans( 'common.select_option' ),
-                                              'choices'     => $this->getData( 'users' ),
-                                              'selected'    => ( $this->model ) ? $this->model->users()->lists( 'id' ) : null ] );
-
-
+                                         'multiple'    => true,
+                                         'empty_value' => trans( 'common.select_option' ),
+                                         'choices'     => $this->getData( 'users' ),
+                                         'selected'    => ( $this->model ) ? $this->model->users()->lists( 'id' ) : null ] );
 
 
         $this->add( 'store', 'submit', [ 'label' => trans( 'common.'.( ( $this->model ) ? 'Edit' : 'Store' ) ),

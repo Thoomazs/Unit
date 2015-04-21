@@ -7,7 +7,7 @@ class ProductForm extends Form
 {
     public function buildForm()
     {
-        $this->setData( 'categories',  toChoices( Category::all() ) );
+        $this->setData( 'categories', toChoices( Category::all() ) );
 
         if ( $this->model ) $this->add( 'id', 'hidden' );
 
