@@ -6,19 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreateAddressesTable' => $baseDir . '/database/migrations/2014_10_27_115067_create_addresses_table.php',
-    'CreateArticlesTable' => $baseDir . '/database/migrations/2015_04_10_123142_create_articles_table.php',
-    'CreateCartTable' => $baseDir . '/database/migrations/2014_10_27_115722_create_cart_table.php',
-    'CreateCategoriesTable' => $baseDir . '/database/migrations/2014_10_27_115356_create_categories_table.php',
+    'CreateBoardsTable' => $baseDir . '/database/migrations/2014_10_27_115232_create_boards_table.php',
     'CreateLogTable' => $baseDir . '/database/migrations/2014_10_27_115253_create_log_table.php',
-    'CreateOrdersTable' => $baseDir . '/database/migrations/2014_10_27_115711_create_orders_table.php',
     'CreatePasswordRemindersTable' => $baseDir . '/database/migrations/2014_10_27_115209_create_password_reminders_table.php',
-    'CreatePaymentsTable' => $baseDir . '/database/migrations/2014_10_27_115519_create_payments_table.php',
-    'CreateProductsPhotoTable' => $baseDir . '/database/migrations/2014_10_27_115325_create_products_photo_table.php',
-    'CreateProductsTable' => $baseDir . '/database/migrations/2014_10_27_115315_create_products_table.php',
     'CreateRolesTable' => $baseDir . '/database/migrations/2014_10_27_115231_create_roles_table.php',
-    'CreateShippingsTable' => $baseDir . '/database/migrations/2014_10_27_115504_create_shippings_table.php',
-    'CreateStatusesTable' => $baseDir . '/database/migrations/2014_10_27_115532_create_statuses_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_27_115132_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',

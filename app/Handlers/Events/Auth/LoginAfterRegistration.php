@@ -1,4 +1,4 @@
-<?php namespace App\Handlers\Events;
+<?php namespace App\Handlers\Events\Auth;
 
 use App\Events\UserWasRegistered;
 use Illuminate\Contracts\Auth\Guard as Auth;
@@ -25,7 +25,6 @@ class LoginAfterRegistration
      */
     public function handle( UserWasRegistered $event )
     {
-        dd($event->user);
         $this->auth->login( $event->user );
     }
 

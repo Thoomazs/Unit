@@ -83,16 +83,28 @@
 
     /*
     |--------------------------------------------------------------------------
-    | Shop site Routes
+    | Poker Planning site Routes
     |--------------------------------------------------------------------------
     |
     */
 
-    Route::group( [ 'namespace' => 'PokerPlanning',  'prefix' => 'poker', ], function ()
+    Route::group( [ 'namespace' => 'PokerPlanning', 'middleware' => [ 'auth' ], 'prefix' => 'poker', ], function ()
     {
         Route::get( '/', [ 'as' => 'poker-planing.index', 'uses' => 'HomeController@index' ] );
     } );
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Retrospective site Routes
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    Route::group( [ 'namespace' => 'Retrospective', 'middleware' => [ 'auth' ], 'prefix' => 'poker', ], function ()
+    {
+        Route::get( '/', [ 'as' => 'retrospective.index', 'uses' => 'HomeController@index' ] );
+    } );
 
     /*
    |--------------------------------------------------------------------------

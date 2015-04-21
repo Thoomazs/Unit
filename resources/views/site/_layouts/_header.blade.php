@@ -16,6 +16,9 @@
                 <li>
                     <a href="{{ route('poker-planing.index') }}">Poker</a>
                 </li>
+                <li>
+                    <a href="{{ route('retrospective.index') }}">Retrospectiva</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @section('nav-right')
