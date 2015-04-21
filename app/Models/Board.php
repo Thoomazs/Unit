@@ -14,7 +14,7 @@ class Board extends Model
      */
     protected $hidden = [ ];
 
-    protected $fillable = [ 'name', 'slug', 'type_id', 'author_id', 'hash' ];
+    protected $fillable = [ 'name', 'slug', 'type_id', 'author_id', 'hash', 'phase' ];
 
     public function type()
     {
@@ -26,9 +26,14 @@ class Board extends Model
         return $this->hasOne( 'App\Models\User', "id", "author_id" );
     }
 
+//    public function users()
+//    {
+//        return $this->belongsToMany( 'App\Models\User', "boards_users", "board_id", "user_id" );
+//    }
+//
     public function users()
     {
-        return $this->belongsToMany( 'App\Models\User', "boards_users", "board_id", "user_id" );
+        return $this->hasMany( 'App\Models\BoardsUser', "board_id" );
     }
 
     public function hasUser( $id )

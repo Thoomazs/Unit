@@ -4,38 +4,40 @@
 
 
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <ul class="list-group">
                 @foreach($board->users as $user)
                     <li class="list-group-item">
-                        <span class="badge badge-success"> <i class="fa fa-check"></i></span>
-                        {{ $user->name }}
-                        </span>
+                        @if( $user->ready )
+                            <span class="badge badge-success"> <i class="fa fa-check"></i></span>
+                        @endif
+
+                        {{ $user->author->name }} – {{ $user->name }}
                     </li>
                 @endforeach
             </ul>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <h1 class="page-header no-margin-top">
                 Retrospektiva: <b>{{ $board->name }}</b> – <span class="text-gray text-italic text-light">{{ $board->author->name }}</span>
             </h1>
 
             <div class="row">
                 <div class="col-sm-5">
-                    <p> Tuto retrospektivu můžete sdílet pomocí odkazu</p>
+                    <p style="margin: 6px 0;"> Tuto retrospektivu můžete sdílet pomocí odkazu</p>
                 </div>
                 <div class="col-sm-7">
-                    <input class="form-control" id="add-link" type="text" value="{{ route('retrospective.invite', $board->hash )}}" />
+                    <input class="form-control" id="add-link" type="text" value="{{ route('retrospective.invite', $board->hash )}}"/>
                 </div>
 
-               </div>
+            </div>
 
             <script type="text/javascript">
                 $( function() {
-                    $("#add-link" ).click( function() {
-                        $(this).select();
-                    })
-                })
+                    $( "#add-link" ).click( function() {
+                        $( this ).select();
+                    } )
+                } )
             </script>
 
             <hr/>
@@ -71,11 +73,13 @@
                                 <div class="controls">
                                     <span>{{ $postIt->type }} – </span>
 
-                                    @if( $boardUser->ready )
+                                    @if( $boardUser->ready and $board->phase == 2 )
                                         <a href="{{ route('retrospective.postit.publish',$postIt->id) }}">
                                             <i class="fa fa-thumb-tack"></i>
                                         </a>
-                                    @else
+                                    @endif
+
+                                    @if( $boardUser->ready == false )
                                         <a href="{{ route('retrospective.postit.delete',$postIt->id) }}">
                                             <i class="fa fa-times"></i>
                                         </a>
