@@ -22,4 +22,9 @@ class HomeController extends BaseCOntroller
         return view( 'site.homepage' );
     }
 
+    public function help()
+    {
+        return view( 'site.help' );
+    }
+
 }

@@ -2,11 +2,14 @@
 
 @section('content')
 
-    <div class="box">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h2 class="">{{ trans('common.Edit profile') }} – {{ $user->name }}</h2>
 
-        <h2 class="form-header">{{ trans('common.Edit profile') }} – {{ $user->name }}</h2>
-
-        {!! form($form) !!}
-
+            <div class="well">
+                {!! form($form) !!}
+            </div>
+        </div>
     </div>
+
 @stop

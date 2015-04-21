@@ -313,6 +313,8 @@ hr {
 
 .navbar-brand img {
   float: left;
+  height: 40px;
+  margin: -10px;
   margin-right: 15px; }
 
 .box {

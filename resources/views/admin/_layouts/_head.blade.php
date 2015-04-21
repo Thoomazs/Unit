@@ -3,7 +3,7 @@
 <meta charset="utf-8"/>
 <title>
     @section('title')
-        Admin | Profiplan.cz
+        Admin
     @show
 </title>
 
