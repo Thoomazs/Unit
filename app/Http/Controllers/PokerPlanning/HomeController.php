@@ -49,17 +49,42 @@ class HomeController extends BaseCOntroller
     public function vote( $slug, $value )
     {
         $board = $this->repo->poker()->slug( $slug )->first();
+        $marked = $this->poker->getQuery()->where( "idUser", "=", $this->user )->where( "idStory", "=", $board->id )->first();
 
-        $data[ "idUser" ]  = $this->user;
-        $data[ "idStory" ] = $board->id;
-        $data[ "value" ]   = $value;
-        $data[ "ready" ]   = 0;
+        if(!isset($marked)) {
+            $data["idUser"] = $this->user;
+            $data["idStory"] = $board->id;
+            $data["value"] = $value;
+            $data["ready"] = 0;
 
-        $this->poker->create( $data );
+            $this->poker->create($data);
+        } else {
+            $this->poker->getQuery()->where( "idUser", "=", $this->user )->where( "idStory", "=", $board->id )->first()->update(array("value" => $value));
+        }
 
         return redirect()->route( 'poker-planning.show', $slug );
 
     }
+
+    public function ready($slug) {
+        $board = $this->repo->poker()->slug( $slug )->first();
+        $status = $this->poker->getQuery()->where( "idUser", "=", $this->user )->where( "idStory", "=", $board->id )->first();
+
+        if(!isset($status))
+            return;
+
+        $this->poker->getQuery()->where( "idUser", "=", $this->user )->where( "idStory", "=", $board->id )->first()->update(array("ready" => 1));
+        return redirect()->route( 'poker-planning.show', $slug);
+    }
+
+    public function lst($slug) {
+        $board = $this->repo->poker()->slug( $slug )->first();
+
+        $users = $this->poker->getQuery()->where("idStory", "=", $board->id)->where("ready", "=", 1)->first();
+
+        return view( 'site.poker-planning.lst', compact( 'board' ) , compact("users"));
+
+     }
 
     public function addBoard( Request $request )
     {
