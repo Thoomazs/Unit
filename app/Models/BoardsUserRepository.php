@@ -30,4 +30,30 @@ class BoardsUserRepository extends Repository
     {
         return $this->getQuery()->with( 'user' )->with( 'board' )->orderBy( 'name', 'ASC' );
     }
+
+
+    /**
+     * @param $id
+     *
+     * @return $this
+     */
+    public function board( $id )
+    {
+        $this->query = $this->getQuery()->where( 'board_id', '=', $id );
+
+        return $this;
+    }
+
+
+    /**
+     * @param $id
+     *
+     * @return $this
+     */
+    public function user( $id )
+    {
+        $this->query = $this->getQuery()->where( 'user_id', '=', $id );
+
+        return $this;
+    }
 }
