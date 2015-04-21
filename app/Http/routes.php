@@ -88,7 +88,7 @@
     |
     */
 
-    Route::group( [ 'namespace' => 'PokerPlanning' ], function ()
+    Route::group( [ 'namespace' => 'PokerPlanning',  'prefix' => 'poker', ], function ()
     {
         Route::get( '/', [ 'as' => 'poker-planing.index', 'uses' => 'HomeController@index' ] );
     } );
