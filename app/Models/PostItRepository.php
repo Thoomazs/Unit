@@ -30,7 +30,7 @@ class PostItRepository extends Repository
      */
     public function addBasicQuery()
     {
-        return $this->getQuery()->with( 'author' )->with( 'board' )->orderBy( 'id', 'DESC' );
+        return $this->getQuery()->with( 'author' )->with( 'board' )->orderBy( 'type', 'DESC' )->orderBy('id', 'DESC');
     }
 
     /**
@@ -50,6 +50,14 @@ class PostItRepository extends Repository
     public function board( $id )
     {
         $this->query = $this->getQuery()->where( 'board_id', '=', $id );
+
+        return $this;
+    }
+
+
+    public function user( $id )
+    {
+        $this->query = $this->getQuery()->where( 'user_id', '=', $id );
 
         return $this;
     }

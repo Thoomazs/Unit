@@ -28,9 +28,6 @@ a
         </div>
     </div>
 
-
-
-
     {!! Form::close() !!}
 
     <hr/>

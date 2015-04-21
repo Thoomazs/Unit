@@ -29,4 +29,18 @@
         </div>
     </div>
 
+
+
+    <hr/>
+
+    <ul class="list-group">
+        @foreach($boards as $board)
+            <li class="list-group-item">
+                <a href="{{ route('retrospective.show', [$board->slug]) }}">
+                    {{ $board->name }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+
 @stop

@@ -52,6 +52,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsToMany( 'App\Models\Role', "assigned_roles", "user_id", "role_id" );
     }
 
+
+    public function boards()
+    {
+        return $this->belongsToMany( 'App\Models\Board', "boards_users", "user_id", "board_id" );
+    }
+
     public function hasRole( $name )
     {
         foreach ( $this->roles as $role ) if ( $role->name == $name ) return true;
