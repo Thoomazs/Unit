@@ -28,7 +28,7 @@ class BoardsUserRepository extends Repository
      */
     public function addBasicQuery()
     {
-        return $this->getQuery()->with( 'user' )->with( 'board' )->orderBy( 'name', 'ASC' );
+        return $this->getQuery()->with( 'author' )->with( 'board' )->orderBy( 'name', 'ASC' );
     }
 
 
