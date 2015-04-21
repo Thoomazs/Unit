@@ -2,6 +2,7 @@
 
 use App\Http\Requests\Request;
 use App\Models\BoardRepository;
+use App\Models\BoardsUserRepository;
 use App\Models\PostItRepository;
 use App\Models\ProductRepository;
 use App\Models\Type;
@@ -45,13 +46,21 @@ class HomeController extends BaseController
         return view( 'site.retrospective.show', compact( 'board', 'form', 'postIts' ) );
     }
 
-    public function addBoard( Request $request )
+    public function addBoard( Request $request, BoardsUserRepository $boardUserRepository )
     {
         $data                = $request->all();
         $data[ 'author_id' ] = $this->user;
         $data[ 'type_id' ]   = Type::whereName( 'Retrospektiva' )->first()->id;
+        $data[ 'hash' ]      = sha1( uniqid( time() ) );
 
         $board = $this->repo->create( $data );
+
+        $data = [ 'user_id'  => $this->user,
+                  'name'     => 'Sprint owner',
+                  'board_id' => $board->id,
+                  'like'     => 5 ];
+
+        $boardUserRepository->create( $data );
 
         return redirect()->route( 'retrospective.show', $board->slug );
     }

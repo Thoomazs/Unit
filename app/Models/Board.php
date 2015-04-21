@@ -14,7 +14,7 @@ class Board extends Model
      */
     protected $hidden = [ ];
 
-    protected $fillable = [ 'name', 'slug', 'type_id', 'author_id' ];
+    protected $fillable = [ 'name', 'slug', 'type_id', 'author_id', 'hash' ];
 
     public function type()
     {
