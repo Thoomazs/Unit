@@ -6,7 +6,7 @@
         <div class="col-sm-8 col-sm-offset-2">
             <div class="jumbotron">
                 <h1 class="page-header text-center">
-                    Připojte se ke sprintu {{ $board->name }}
+                    Připojte se k retrospektivě {{ $board->name }}
                 </h1>
                 <hr/>
 
