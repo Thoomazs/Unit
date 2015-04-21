@@ -26,7 +26,6 @@
                          'password'   => bcrypt( 'heslo' ),
                          'created_at' => new DateTime,
                          'updated_at' => new DateTime ],
-                       ,
                        [ 'firstname'  => 'Martin',
                          'lastname'   => 'Tauchman',
                          'slug'       => 'martin-tauchman',
