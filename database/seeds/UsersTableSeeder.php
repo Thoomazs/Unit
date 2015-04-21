@@ -15,17 +15,11 @@
             $users = [ [ 'firstname'  => 'Tomáš',
                          'lastname'   => 'Novotný',
                          'slug'       => 'tomas-novotny',
-                         'email'      => 'novotny@cynet.cz',
+                         'email'      => 'novott20@fit.cvut.cz',
                          'password'   => bcrypt( 'heslo' ),
                          'created_at' => new DateTime,
-                         'updated_at' => new DateTime ],
-                       [ 'firstname'  => '',
-                         'lastname'   => '',
-                         'slug'       => 'test',
-                         'email'      => 'test@cynet.cz',
-                         'password'   => bcrypt( 'heslo' ),
-                         'created_at' => new DateTime,
-                         'updated_at' => new DateTime ] ];
+                         'updated_at' => new DateTime ]
+                        ];
 
             DB::table( 'users' )->insert( $users );
 

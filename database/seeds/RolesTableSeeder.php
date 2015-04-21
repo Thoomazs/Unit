@@ -13,9 +13,12 @@
 
             DB::table( 'roles' )->delete();
 
-            $roles = [ [ 'name'       => 'Admin',
+            $roles = [ [ 'name'       => 'Project Manager',
                          'created_at' => new DateTime,
-                         'updated_at' => new DateTime ] ];
+                         'updated_at' => new DateTime ],
+                       [ 'name'       => 'Developer',
+                         'created_at' => new DateTime,
+                         'updated_at' => new DateTime ]];
 
             DB::table( 'roles' )->insert( $roles );
 
@@ -25,8 +28,7 @@
 
             $roles = [ [ 'user_id' => 1,
                          'role_id' => 1 ],
-                       [ 'user_id' => 2,
-                         'role_id' => 1 ] ];
+            ];
 
             DB::table( 'assigned_roles' )->insert( $roles );
 

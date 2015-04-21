@@ -25,7 +25,6 @@ class LoginAfterRegistration
      */
     public function handle( UserWasRegistered $event )
     {
-        dd($event->user);
         $this->auth->login( $event->user );
     }
 

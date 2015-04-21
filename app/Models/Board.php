@@ -20,4 +20,6 @@ class Board extends Model
     {
         return $this->hasOne( 'App\Models\Type', "id", "type_id" );
     }
+
+
 }
