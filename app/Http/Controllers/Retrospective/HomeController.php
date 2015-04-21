@@ -58,7 +58,7 @@ class HomeController extends BaseController
 
         // get all post-its
         $postIts        = $postItRepository->board( $board->id )->user( $this->user )->hidden()->all();
-        $visiblePostIts = $postItRepository->board( $board->id )->user( $this->user )->visible()->all();
+        $visiblePostIts = $postItRepository->board( $board->id )->visible()->all();
 
         return view( 'site.retrospective.show', compact( 'board', 'form', 'postIts', 'boardUser', 'visiblePostIts' ) );
     }

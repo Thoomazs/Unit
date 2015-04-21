@@ -34,7 +34,7 @@ class PasswordController extends Controller
      */
     public function getEmail()
     {
-        $form = \FormBuilder::create( 'App\Forms\Password\EmailForm' );
+        $form = \FormBuilder::create( 'Password\EmailForm' );
 
         return view( 'site.users.password.email', compact( 'form' ) );
     }
@@ -71,7 +71,7 @@ class PasswordController extends Controller
     {
         if ( is_null( $token ) ) throw new NotFoundHttpException;
 
-        $form = \FormBuilder::create( 'App\Forms\Password\ResetForm', [ 'data' => [ 'token' => $token ] ] );
+        $form = \FormBuilder::create( 'Password\ResetForm', [ 'data' => [ 'token' => $token ] ] );
 
         return view( 'site.users.password.reset', compact( 'form' ) );
     }

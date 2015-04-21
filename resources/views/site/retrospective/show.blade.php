@@ -9,7 +9,7 @@
                 @foreach($board->users as $user)
                     <li class="list-group-item">
                         @if( $user->ready )
-                            <span class="badge badge-success"> <i class="fa fa-check"></i></span>
+                            <span class="badge badge-success" style="background-color:#5CB85C"> <i class="fa fa-check"></i></span>
                         @endif
 
                         {{ $user->author->name }} – {{ $user->name }}
