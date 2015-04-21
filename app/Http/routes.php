@@ -140,3 +140,4 @@
    */
 
     Route::get( '/', [ 'as' => 'home', 'uses' => 'HomeController@index' ] );
+    Route::get( '/help', [ 'as' => 'pages.help', 'uses' => 'HomeController@help' ] );

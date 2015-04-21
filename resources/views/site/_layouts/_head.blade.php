@@ -19,7 +19,7 @@
 {{--<link rel="stylesheet" href="{{ elixir("css/all.min.css") }}"/>--}}
 
 <link rel="stylesheet" href="{{ asset("css/vendor.css") }}"/>
-<link rel="stylesheet" href="{{ elixir("css/app.css") }}"/>
+<link rel="stylesheet" href="{{ asset("css/app.css") }}"/>
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -33,5 +33,5 @@
 <!-- JS
 ================================================== -->
 <script type="text/javascript" src="{{ asset("js/vendor.js") }}"></script>
-<script type="text/javascript" src="{{ elixir("js/app.js") }}"></script>
+<script type="text/javascript" src="{{ asset("js/app.js") }}"></script>
 

@@ -45,7 +45,7 @@ ul {
     list-style-position: inside; }
 
 hr {
-  border-top-color: #D0D0D0;
+  border-top-color: #eee;
   margin: 20px 0; }
 
 .table-simple th, .table-simple td {
@@ -313,6 +313,8 @@ hr {
 
 .navbar-brand img {
   float: left;
+  height: 40px;
+  margin: -10px;
   margin-right: 15px; }
 
 .box {

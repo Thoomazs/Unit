@@ -3,7 +3,27 @@
 @section('content')
 
     <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
+        <div class="col-sm-4">
+            <h2 class="page-header text-center"> Moje sprinty </h2>
+            @if(count($boards) > 0)
+                <ul class="list-group">
+                    @foreach($boards as $board)
+                        <li class="list-group-item text-center">
+                            {{ $board->name }} – {{ $board->author->name }}
+                            <a href="{{ route('retrospective.show', [$board->slug]) }}" class="pull-right btn btn-xs btn-info" style="padding: 0 10px;">
+                                <i class="fa fa-caret-right"></i>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @else
+                <div class="text-gray text-thin text-center">
+                    Žádné aktivní sprinty
+                </div>
+            @endif
+
+        </div>
+        <div class="col-sm-8">
             <div class="jumbotron">
                 <h1 class="page-header text-center">
                     Vytvořte nový Sprint
@@ -31,17 +51,6 @@
 
 
 
-    <h2 class="page-header text-center"> Moje sprinty </h2>
-    <ul class="list-group">
-        @foreach($boards as $board)
-            <li class="list-group-item text-center col-sm-6 col-sm-offset-3">
-                    {{ $board->name }} – {{ $board->author->name }}
 
-                <a href="{{ route('retrospective.show', [$board->slug]) }}" class="pull-right btn btn-xs btn-info" style="padding: 0 10px;">
-                    <i class="fa fa-caret-right"></i>
-                </a>
-            </li>
-        @endforeach
-    </ul>
 
 @stop
