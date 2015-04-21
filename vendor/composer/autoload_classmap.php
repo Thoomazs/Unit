@@ -430,5 +430,6 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/Text/Template.php',
+    'TypesTableSeeder' => $baseDir . '/database/seeds/TypesTableSeeder.php',
     'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
 );

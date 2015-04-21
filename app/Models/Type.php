@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Board extends Model
+class Type extends Model
 {
 
     protected $table = 'boards_type';

@@ -14,11 +14,16 @@ class Board extends Model
      */
     protected $hidden = [ ];
 
-    protected $fillable = [ 'name', 'slug', 'type_id' ];
+    protected $fillable = [ 'name', 'slug', 'type_id', 'author_id' ];
 
     public function type()
     {
         return $this->hasOne( 'App\Models\Type', "id", "type_id" );
+    }
+
+    public function author()
+    {
+        return $this->hasOne( 'App\Models\User', "id", "author_id" );
     }
 
 

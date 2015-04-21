@@ -14,7 +14,7 @@
 
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="{{ route('poker-planing.index') }}">Poker</a>
+                    <a href="{{ route('poker-planning.index') }}">Poker</a>
                 </li>
                 <li>
                     <a href="{{ route('retrospective.index') }}">Retrospectiva</a>

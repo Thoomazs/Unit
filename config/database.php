@@ -55,10 +55,8 @@ return [
 
 		'mysql' => [
 			'driver'    => 'mysql',
-//			'host'      => env('DB_HOST', 'localhost'),
-			'host'      => 'wm73.wedos.net',
+			'host'      => env('DB_HOST', 'localhost'),
 			'database'  => env('DB_DATABASE', 'forge'),
-//			'database'  => 'd80586_restsys',
 			'username'  => env('DB_USERNAME', 'forge'),
 			'password'  => env('DB_PASSWORD', ''),
 			'charset'   => 'utf8',

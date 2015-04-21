@@ -69,6 +69,24 @@ abstract class Repository
     }
 
     /**
+     * Return first model instance
+     *
+     * @return Collection
+     */
+    public function first( $columns = [ '*' ] )
+    {
+        $this->addBasicQuery();
+
+        $data = $this->getQuery()->get( $columns );
+
+        $this->query = null;
+
+        if(count($data) == 0) return null;
+
+        return $data[0];
+    }
+
+    /**
      * Return all model instance paginated
      *
      * @return Collection

@@ -19,6 +19,7 @@
 
             $this->call( 'UsersTableSeeder' );
             $this->call( 'RolesTableSeeder' );
+            $this->call( 'TypesTableSeeder' );
             $this->call( 'LogsTableSeeder' );
 
             DB::statement( 'SET FOREIGN_KEY_CHECKS=1;' );

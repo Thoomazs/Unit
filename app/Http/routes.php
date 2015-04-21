@@ -90,7 +90,9 @@
 
     Route::group( [ 'namespace' => 'PokerPlanning', 'middleware' => [ 'auth' ], 'prefix' => 'poker', ], function ()
     {
-        Route::get( '/', [ 'as' => 'poker-planing.index', 'uses' => 'HomeController@index' ] );
+        Route::get( '/', [ 'as' => 'poker-planning.index', 'uses' => 'HomeController@index' ] );
+        Route::get( '/{slug}', [ 'as' => 'poker-planning.show', 'uses' => 'HomeController@show' ] );
+        Route::post( 'add', [ 'as' => 'poker-planning.add', 'uses' => 'HomeController@addBoard' ] );
     } );
 
 
@@ -101,9 +103,11 @@
     |
     */
 
-    Route::group( [ 'namespace' => 'Retrospective', 'middleware' => [ 'auth' ], 'prefix' => 'poker', ], function ()
+    Route::group( [ 'namespace' => 'Retrospective', 'middleware' => [ 'auth' ], 'prefix' => 'retro', ], function ()
     {
         Route::get( '/', [ 'as' => 'retrospective.index', 'uses' => 'HomeController@index' ] );
+        Route::get( '/{slug}', [ 'as' => 'retrospective.show', 'uses' => 'HomeController@show' ] );
+        Route::post( 'add', [ 'as' => 'retrospective.add', 'uses' => 'HomeController@addBoard' ] );
     } );
 
     /*

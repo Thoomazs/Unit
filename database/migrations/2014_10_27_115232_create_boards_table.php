@@ -25,13 +25,13 @@
             {
                 $table->increments( 'id' )->unsigned();
                 $table->integer( 'type_id' )->unsigned();
-                $table->integer( 'author' )->unsigned();
+                $table->integer( 'author_id' )->unsigned();
                 $table->string( 'name' );
                 $table->string( 'slug' )->unique();
                 $table->timestamps();
 
                 $table->foreign( 'type_id' )->references( 'id' )->on( 'boards_type' )->onUpdate( 'cascade' )->onDelete( 'cascade' );
-                $table->foreign( 'author' )->references( 'id' )->on( 'users' )->onUpdate( 'cascade' )->onDelete( 'cascade' );
+                $table->foreign( 'author_id' )->references( 'id' )->on( 'users' )->onUpdate( 'cascade' )->onDelete( 'cascade' );
             } );
         }
 
@@ -45,7 +45,7 @@
             Schema::table( 'boards', function ( Blueprint $table )
             {
                 $table->dropForeign( 'boards_type_id_foreign' );
-                $table->dropForeign( 'boards_author_foreign' );
+                $table->dropForeign( 'boards_author_id_foreign' );
             } );
 
             Schema::drop( 'boards_type' );

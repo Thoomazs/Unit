@@ -1,10 +1,8 @@
 <?php namespace App\Models;
 
 use App\Support\Collection;
-use App\Support\Repositories\Traits\FileManager;
 use App\Support\Repositories\Traits\Slugable;
 use App\Support\Repository;
-use Illuminate\Support\Facades\Cookie;
 
 /**
  * Class BoardRepository
@@ -52,16 +50,52 @@ class BoardRepository extends Repository
     }
 
     /**
+     * @return $this
+     */
+    public function retrospective()
+    {
+        $id = Type::whereName( 'Retrospektiva' )->first()->id;
+
+        $this->query = $this->getQuery()->whereTypeId( $id );
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function poker()
+    {
+        $id = Type::whereName( 'Poker Planning' )->first()->id;
+
+        $this->query = $this->getQuery()->whereTypeId( $id );
+
+        return $this;
+    }
+
+    /**
+     * @param $slug
+     *
+     * @return $this
+     */
+    public function slug( $slug )
+    {
+        $this->query = $this->getQuery()->whereSlug( $slug );
+
+        return $this;
+    }
+
+    /**
      * Fill data to model instance
      *
-     * @param Board       $role
+     * @param Board      $role
      * @param Collection $data
      *
      * @return mixed
      */
     public function fillData( Board $board, Collection $data )
     {
-        $data->slug = $this->createSlug( $data->firstname.' '.$data->lastname, $data->get( 'id', 0 ) );
+        $data->slug = $this->createSlug( $data->name, $data->get( 'id', 0 ) );
 
         $board->fill( $data->toArray() );
 
