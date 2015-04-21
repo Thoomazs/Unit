@@ -88,7 +88,7 @@
     |
     */
 
-    Route::group( [ 'namespace' => 'PokerPlanning',  'prefix' => 'poker', ], function ()
+    Route::group( [ 'namespace' => 'PokerPlanning', 'middleware' => [ 'auth' ], 'prefix' => 'poker', ], function ()
     {
         Route::get( '/', [ 'as' => 'poker-planing.index', 'uses' => 'HomeController@index' ] );
     } );
@@ -101,7 +101,7 @@
     |
     */
 
-    Route::group( [ 'namespace' => 'Retrospective',  'prefix' => 'poker', ], function ()
+    Route::group( [ 'namespace' => 'Retrospective', 'middleware' => [ 'auth' ], 'prefix' => 'poker', ], function ()
     {
         Route::get( '/', [ 'as' => 'retrospective.index', 'uses' => 'HomeController@index' ] );
     } );
