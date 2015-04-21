@@ -13,11 +13,11 @@
         <div class="collapse navbar-collapse" id="header-collapse">
 
             <ul class="nav navbar-nav">
-                <li class="{{ ( Request::url() == route('retrospective.index') ? ' active' : '') }}">
-                    <a href="{{ route('retrospective.index') }}">Retrospectiva</a>
-                </li>
                 <li class="{{ ( Request::url() == route('poker-planning.index') ? ' active' : '') }}">
                     <a href="{{ route('poker-planning.index') }}">Poker Planning</a>
+                </li>
+                <li class="{{ ( Request::url() == route('retrospective.index') ? ' active' : '') }}">
+                    <a href="{{ route('retrospective.index') }}">Retrospectiva</a>
                 </li>
                 <li>
                     <a href="/">Brainstorming</a>
