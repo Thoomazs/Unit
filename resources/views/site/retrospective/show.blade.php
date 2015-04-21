@@ -71,7 +71,7 @@
                 <div class="col-sm-6">
 
                     @if( $boardUser->ready == false )
-                        <a class="btn btn-success btn-block btn-lg" href="{{ route('retrospective.user.ready', $user->id) }}">
+                        <a class="btn btn-success btn-block btn-lg" href="{{ route('retrospective.user.ready', $boardUser->id) }}">
                             I am ready
                         </a>
                     @else

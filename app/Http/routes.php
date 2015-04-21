@@ -113,7 +113,7 @@
     {
         Route::get( '/', [ 'as' => 'retrospective.index', 'uses' => 'HomeController@index' ] );
 
-        Route::get( '/add', [ 'as' => 'retrospective.add', 'uses' => 'HomeController@addBoard' ] );
+        Route::post( '/add', [ 'as' => 'retrospective.add', 'uses' => 'HomeController@addBoard' ] );
 
         Route::get( '/{slug}', [ 'as' => 'retrospective.show', 'uses' => 'HomeController@show' ] );
 
