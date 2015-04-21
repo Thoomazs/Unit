@@ -18,7 +18,7 @@ class CreatePostitsTable extends Migration {
             $table->integer('board_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('type', 10);
-            $table->text('text');
+            $table->string('text', 100);
             $table->integer('like')->unsigned();
             $table->tinyInteger('visible')->unsigned()->default(0);
 			$table->timestamps();

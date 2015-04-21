@@ -28,6 +28,7 @@
                 $table->integer( 'author_id' )->unsigned();
                 $table->string( 'name' );
                 $table->string( 'slug' )->unique();
+                $table->string( 'hash', 45)->unique()->default();
                 $table->tinyInteger( 'phase' )->usigned()->default( 1 );
                 $table->timestamps();
 

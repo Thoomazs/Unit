@@ -17,6 +17,8 @@ class CreateBoardsUsersTable extends Migration {
 			$table->increments('id')->unsigned();
 			$table->integer('board_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->string('name', 255)->nullable();
+            $table->boolean('ready')->default(false);
             $table->tinyInteger('like')->unsigned();
 			$table->timestamps();
 
