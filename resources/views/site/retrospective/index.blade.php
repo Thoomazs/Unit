@@ -2,48 +2,31 @@
 
 @section('content')
 
-    RETRO
-
-    {!! Form::open(['url'=>route('retrospective.add')]) !!}
-
     <div class="row">
-        <div class="col-sm-8">
-            <!-- Name Form Input -->
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="jumbotron">
+                <h1 class="page-header text-center">
+                    Vytvořte nový Sprint
+                </h1>
+                <hr/>
 
-            <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <div class="form-relative">
-                    {!! $errors->first('name', '<div class="form-error">:message</div>') !!}
+                {!! Form::open(['url'=>route('retrospective.add')]) !!}
 
-                    {!! Form::text('name', null, ['class' => 'form-control', 'autocomplete' => 'off']) !!}
+                <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                    <div class="form-relative">
+                        {!! $errors->first('name', '<div class="form-error">:message</div>') !!}
+
+                        {!! Form::text('name', null, ['class' => 'form-control input-lg', 'autocomplete' => 'off', 'placeholder' => 'Název']) !!}
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
 
-            <!-- Common.Add new Board Form Submit -->
+                <div class="form-group">
+                    {!! Form::button('Vytvořit', ['type' => 'submit', 'class' => 'btn btn-success btn-lg btn-block']) !!}
+                </div>
 
-            <div class="form-group">
-                {!! Form::button(trans('common.Add new Board'), ['type' => 'submit', 'class' => 'btn btn-primary btn-block']) !!}
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
-
-
-
-
-    {!! Form::close() !!}
-
-    <hr/>
-
-
-    <ul class="list-group">
-        @foreach($boards as $board)
-        <li class="list-group-item">
-            <a href="{{ route('retrospective.show', [$board->slug]) }}">
-                {{ $board->name }}
-            </a>
-        </li>
-        @endforeach
-    </ul>
 
 @stop

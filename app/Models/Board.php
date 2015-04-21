@@ -26,5 +26,15 @@ class Board extends Model
         return $this->hasOne( 'App\Models\User', "id", "author_id" );
     }
 
+    public function users()
+    {
+        return $this->belongsToMany( 'App\Models\User', "boards_users", "board_id", "user_id" );
+    }
 
+    public function hasUser( $id )
+    {
+        foreach ( $this->users as $user ) if ( $user->id == $id ) return true;
+
+        return false;
+    }
 }
